@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: sysgateway
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+  cloud:
+    gateway:
+      #开启网关的跨域功能
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求
+            allowedOrigins: "*" #跨域处理 允许所有的域
+            allowedMethods: # 支持的方法
+             - GET
+             - POST
+             - PUT
+             - DELETE
+      routes:
+        - id: system
+          uri: lb://system
+          predicates:
+            - Path=/system/**
+server:
+  port: 9101
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka
+  instance:
+    prefer-ip-address: true
