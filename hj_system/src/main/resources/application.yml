@@ -5,9 +5,9 @@ spring:
     name: system
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hj_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/hj_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: 123456
+    password: 12345678
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
 eureka:
@@ -37,14 +37,16 @@ hystrix:
           thread:
             # 熔断器超时时间，默认：1000/毫秒
             timeoutInMilliseconds: 20000
-mybatis:
-  mapper-locations:
-    - classpath:mapper/*.xml
+
+
+mybatis-plus:
+  mapper-locations: mapper/*.xml
   configuration:
     # 设置启用数据库字段下划线映射到java对象的驼峰式命名属性，默认为false （ 注意如果返回类型是HashMap会使驼峰标识失效）
     map-underscore-to-camel-case: true
     # 打印sql日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.hj.entity
 
 workerId: 1
 datacenterId: 1

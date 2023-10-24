@@ -1,6 +1,6 @@
 package com.hj.oauth.config;
 
-import com.lagou.oauth.util.UserJwt;
+import com.hj.oauth.util.UserJwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -32,9 +32,9 @@ public class CustomUserAuthenticationConverter extends DefaultUserAuthentication
 
         //获取用户自定义JWT对象
         UserJwt userJwt = null;
-        if(principal instanceof  UserJwt){
+        if (principal instanceof UserJwt) {
             userJwt = (UserJwt) principal;
-        }else{
+        } else {
             //refresh_token默认不去调用userdetailService获取用户信息，这里我们手动去调用，得到 UserJwt
             UserDetails userDetails = userDetailsService.loadUserByUsername(name);
             userJwt = (UserJwt) userDetails;
