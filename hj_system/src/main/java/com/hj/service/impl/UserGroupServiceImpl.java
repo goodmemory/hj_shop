@@ -1,11 +1,17 @@
 package com.hj.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
+import com.hj.bo.UserGroupBo;
+import com.hj.constant.ConstantParams;
 import com.hj.entity.UserGroup;
 import com.hj.mapper.UserGroupMapper;
 import com.hj.service.UserGroupService;
+import com.hj.util.DateUtil;
 import com.hj.util.PagedGridResult;
+import com.hj.vo.UserGroupVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +39,8 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
     @Override
     public PagedGridResult getUserGroupList(Integer page, Integer pageSize) {
         PageHelper.startPage(page, pageSize);
-        List<UserGroup> list = userGroupMapper.selectList(null);
+        List<UserGroup> list = userGroupMapper.selectList(
+                new LambdaQueryWrapper<UserGroup>().eq(UserGroup::getStatus, ConstantParams.COMMON_STATUS_1));
         return PagedGridResult.setterPagedGrid(list, page);
     }
 
@@ -47,5 +54,48 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
         UserGroup userGroup = new UserGroup();
         userGroup.setGroupName(groupName);
         return userGroupMapper.insert(userGroup);
+    }
+
+    /**
+     * 根据id获取用户组信息
+     *
+     * @param groupId
+     * @return
+     */
+    @Override
+    public UserGroupVo getUserGroupInfoById(Integer groupId) {
+        UserGroup userGroup = this.getById(groupId);
+        UserGroupVo groupVo = new UserGroupVo();
+        BeanUtils.copyProperties(userGroup, groupVo);
+        return groupVo;
+    }
+
+    /**
+     * 修改用户组
+     *
+     * @param bo
+     * @return
+     */
+    @Override
+    public Boolean updateUserGroup(UserGroupBo bo) {
+        UserGroup userGroup = new UserGroup();
+        BeanUtils.copyProperties(bo, userGroup);
+        userGroup.setUpdateTime(DateUtil.getCurrentDateTime());
+        return this.updateById(userGroup);
+    }
+
+    /**
+     * 删除用户组
+     *
+     * @param groupId
+     * @return
+     */
+    @Override
+    public Boolean deleteUserGroupById(Integer groupId) {
+        UserGroup userGroup = new UserGroup();
+        userGroup.setGroupId(groupId);
+        userGroup.setStatus(ConstantParams.COMMON_STATUS_0);
+        userGroup.setUpdateTime(DateUtil.getCurrentDateTime());
+        return this.updateById(userGroup);
     }
 }

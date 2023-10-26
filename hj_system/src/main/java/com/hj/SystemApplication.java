@@ -1,8 +1,6 @@
 package com.hj;
 
-import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.hj.util.IdWorker;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,9 +29,9 @@ public class SystemApplication {
     }
 
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor() {
-        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.H2));
-        return interceptor;
+    public PaginationInterceptor paginationInterceptor() {
+        PaginationInterceptor page = new PaginationInterceptor();
+        page.setDialectType("mysql");
+        return page;
     }
 }

@@ -1,8 +1,10 @@
 package com.hj.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hj.bo.UserGroupBo;
 import com.hj.entity.UserGroup;
 import com.hj.util.PagedGridResult;
+import com.hj.vo.UserGroupVo;
 
 /**
  * @author mayaoqi
@@ -26,4 +28,28 @@ public interface UserGroupService extends IService<UserGroup> {
      * @param groupName
      */
     Integer insertUserGroup(String groupName);
+
+    /**
+     * 根据id获取用户组信息
+     *
+     * @param groupId
+     * @return
+     */
+    UserGroupVo getUserGroupInfoById(Integer groupId);
+
+    /**
+     * 修改用户组
+     *
+     * @param bo
+     * @return
+     */
+    Boolean updateUserGroup(UserGroupBo bo);
+
+    /**
+     * 删除用户组
+     *
+     * @param groupId
+     * @return
+     */
+    Boolean deleteUserGroupById(Integer groupId);
 }

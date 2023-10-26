@@ -89,17 +89,29 @@
             <artifactId>mybatis-plus-core</artifactId>
             <version>3.4.0</version>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>org.mybatis.spring.boot</groupId>-->
-        <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
-        <!--            <version>2.0.1</version>-->
-        <!--        </dependency>-->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-extension</artifactId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.4.0</version>
         </dependency>
 
+        <!--        <dependency>-->
+        <!--            <groupId>com.baomidou</groupId>-->
+        <!--            <artifactId>mybatis-plus-extension</artifactId>-->
+        <!--            <version>3.4.0</version>-->
+        <!--        </dependency>-->
+
+        <!-- knife4j 接口文档工具 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>2.0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-springdoc-ui</artifactId>
+            <version>3.0.3</version>
+        </dependency>
     </dependencies>
 
 </project>

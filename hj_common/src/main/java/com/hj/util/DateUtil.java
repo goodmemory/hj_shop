@@ -120,9 +120,22 @@ public class DateUtil {
      * @param pattern
      * @return
      */
-    public static String data2str(Date date, String pattern){
+    public static String data2str(Date date, String pattern) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         return simpleDateFormat.format(date);
+    }
+
+    public static java.sql.Timestamp getCurrentTimestamp() {
+        return new java.sql.Timestamp(new Date().getTime());
+    }
+
+    /**
+     * @return
+     */
+    public static Date getCurrentDateTime() {
+        Calendar calNow = Calendar.getInstance();
+        Date dtNow = calNow.getTime();
+        return dtNow;
     }
 
     public static void main(String[] args) {

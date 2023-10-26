@@ -11,26 +11,28 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @TableName eb_user_group
+ * @TableName eb_user_label
  */
-@TableName(value = "eb_user_group")
+@TableName(value = "eb_user_label")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserGroup implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class UserLabel implements Serializable {
 
-    @TableId(value = "group_id", type = IdType.AUTO)
-    private Integer groupId;
+    @TableId(value = "label_id", type = IdType.AUTO)
+    private Integer labelId;
 
-    private String groupName;
+    private String labelName;
+
+    private Integer merId;
+
+    private Integer type;
 
     private Date createTime;
 
     private Date updateTime;
 
-    /**
-     * 逻辑删除标志 1：未删除  0：已删除
-     */
     private Integer status;
+
+    private static final long serialVersionUID = 1L;
 }

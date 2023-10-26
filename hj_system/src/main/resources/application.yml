@@ -10,6 +10,9 @@ spring:
     password: 12345678
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
 eureka:
   client:
     service-url:
