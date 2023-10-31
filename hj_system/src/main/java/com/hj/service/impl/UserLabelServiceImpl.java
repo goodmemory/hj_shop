@@ -40,7 +40,8 @@ public class UserLabelServiceImpl extends ServiceImpl<UserLabelMapper, UserLabel
     public PagedGridResult getUserLabelList(Integer page, Integer pageSize) {
         PageHelper.startPage(page, pageSize);
         List<UserLabel> list = userLabelMapper.selectList(
-                new LambdaQueryWrapper<UserLabel>().eq(UserLabel::getStatus, ConstantParams.COMMON_STATUS_1));
+                new LambdaQueryWrapper<UserLabel>().eq(UserLabel::getStatus, ConstantParams.COMMON_STATUS_1)
+                        .orderByDesc(UserLabel::getCreateTime));
         return PagedGridResult.setterPagedGrid(list, page);
     }
 

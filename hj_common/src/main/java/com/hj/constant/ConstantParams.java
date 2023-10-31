@@ -18,6 +18,8 @@ public class ConstantParams {
     //用户标签参数
     public static final String LABEL_NAME_NOT_ALLOW_NULL = "用户标签名称不能为空！";
     public static final String LABEL_ID_NOT_ALLOW_NULL = "用户标签ID不能为空！";
-
-
+    //用户投诉参数
+    public static final String FEEDBACK_ID_NOT_ALLOW_NULL = "用户投诉ID不能为空！";
+    //用户投诉分类参数
+    public static final String FEEDBACK_CATEGORY_ID_NOT_ALLOW_NULL = "用户投诉分类ID不能为空！";
 }

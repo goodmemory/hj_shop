@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.FeedbackCategoryMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.FeedbackCategory">
+        <id property="feedbackCategoryId" column="feedback_category_id" jdbcType="INTEGER"/>
+        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <result property="cateName" column="cate_name" jdbcType="VARCHAR"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        <result property="isShow" column="is_show" jdbcType="TINYINT"/>
+        <result property="level" column="level" jdbcType="INTEGER"/>
+        <result property="merId" column="mer_id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        feedback_category_id
+        ,pid,cate_name,
+        path,sort,pic,
+        is_show,level,mer_id,
+        create_time,update_time,status
+    </sql>
+
+    <select id="getParentFeedbackCategory" parameterType="hashmap" resultType="com.hj.vo.FeedbackCategoryVo">
+        select
+        <include refid="Base_Column_List"></include>
+        from eb_feedback_category efc
+        where efc.status=1 and efc.pid=0
+        order by efc.sort desc
+    </select>
+</mapper>

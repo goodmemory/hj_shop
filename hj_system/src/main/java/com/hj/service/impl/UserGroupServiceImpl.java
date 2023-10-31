@@ -11,6 +11,7 @@ import com.hj.service.UserGroupService;
 import com.hj.util.DateUtil;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.UserGroupVo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.List;
  * @createDate 2023-10-23 16:49:35
  */
 @Service
+@Slf4j
 public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup>
         implements UserGroupService {
 
@@ -40,7 +42,9 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
     public PagedGridResult getUserGroupList(Integer page, Integer pageSize) {
         PageHelper.startPage(page, pageSize);
         List<UserGroup> list = userGroupMapper.selectList(
-                new LambdaQueryWrapper<UserGroup>().eq(UserGroup::getStatus, ConstantParams.COMMON_STATUS_1));
+                new LambdaQueryWrapper<UserGroup>().eq(UserGroup::getStatus, ConstantParams.COMMON_STATUS_1)
+                        .orderByDesc(UserGroup::getCreateTime));
+        log.info("获取所有用户组分页数据：" + list.toString());
         return PagedGridResult.setterPagedGrid(list, page);
     }
 
