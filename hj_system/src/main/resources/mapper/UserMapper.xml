@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hj.mapper.UserMapper">
-    <select id="getById" resultType="com.hj.entity.User">
-        select *
-        from eb_user
-        where uid = #{userId};
-    </select>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.user.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.user.User">
+        <id property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="wechatUserId" column="wechat_user_id" jdbcType="INTEGER"/>
+        <result property="account" column="account" jdbcType="VARCHAR"/>
+        <result property="pwd" column="pwd" jdbcType="VARCHAR"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="TINYINT"/>
+        <result property="birthday" column="birthday" jdbcType="DATE"/>
+        <result property="cardId" column="card_id" jdbcType="VARCHAR"/>
+        <result property="mark" column="mark" jdbcType="VARCHAR"/>
+        <result property="labelId" column="label_id" jdbcType="VARCHAR"/>
+        <result property="groupId" column="group_id" jdbcType="INTEGER"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="CHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="cancelTime" column="cancel_time" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastTime" column="last_time" jdbcType="TIMESTAMP"/>
+        <result property="lastIp" column="last_ip" jdbcType="VARCHAR"/>
+        <result property="nowMoney" column="now_money" jdbcType="DECIMAL"/>
+        <result property="brokeragePrice" column="brokerage_price" jdbcType="DECIMAL"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="spreadUid" column="spread_uid" jdbcType="INTEGER"/>
+        <result property="spreadTime" column="spread_time" jdbcType="TIMESTAMP"/>
+        <result property="spreadLimit" column="spread_limit" jdbcType="TIMESTAMP"/>
+        <result property="brokerageLevel" column="brokerage_level" jdbcType="INTEGER"/>
+        <result property="userType" column="user_type" jdbcType="VARCHAR"/>
+        <result property="promoterTime" column="promoter_time" jdbcType="TIMESTAMP"/>
+        <result property="isPromoter" column="is_promoter" jdbcType="TINYINT"/>
+        <result property="mainUid" column="main_uid" jdbcType="INTEGER"/>
+        <result property="payCount" column="pay_count" jdbcType="INTEGER"/>
+        <result property="payPrice" column="pay_price" jdbcType="DECIMAL"/>
+        <result property="spreadCount" column="spread_count" jdbcType="INTEGER"/>
+        <result property="spreadPayCount" column="spread_pay_count" jdbcType="INTEGER"/>
+        <result property="spreadPayPrice" column="spread_pay_price" jdbcType="DECIMAL"/>
+        <result property="integral" column="integral" jdbcType="INTEGER"/>
+        <result property="memberLevel" column="member_level" jdbcType="INTEGER"/>
+        <result property="memberValue" column="member_value" jdbcType="INTEGER"/>
+        <result property="countStart" column="count_start" jdbcType="INTEGER"/>
+        <result property="countFans" column="count_fans" jdbcType="INTEGER"/>
+        <result property="inviterId" column="inviter_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        uid
+        ,wechat_user_id,account,
+        pwd,real_name,sex,
+        birthday,card_id,mark,
+        label_id,group_id,nickname,
+        avatar,phone,address,
+        cancel_time,create_time,last_time,
+        last_ip,now_money,brokerage_price,
+        status,spread_uid,spread_time,
+        spread_limit,brokerage_level,user_type,
+        promoter_time,is_promoter,main_uid,
+        pay_count,pay_price,spread_count,
+        spread_pay_count,spread_pay_price,integral,
+        member_level,member_value,count_start,
+        count_fans,inviter_id
+    </sql>
+
+    <update id="updateBatchGroupId" parameterType="com.hj.bo.user.UserListBo">
+        update eb_user set group_id=#{bo.groupId}
+        where uid in
+        <foreach collection="bo.uids" item="i" index="index" open="(" separator="," close=")">
+            #{i}
+        </foreach>
+    </update>
+
+    <update id="updateBatchLabelId" parameterType="com.hj.bo.user.UserListBo">
+        update eb_user set label_id=#{labelId}
+        where uid in
+        <foreach collection="bo.uids" item="i" index="index" open="(" separator="," close=")">
+            #{i}
+        </foreach>
+    </update>
 </mapper>

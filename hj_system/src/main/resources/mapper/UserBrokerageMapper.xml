@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.user.UserBrokerageMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.user.UserBrokerage">
+        <id property="userBrokerageId" column="user_brokerage_id" jdbcType="INTEGER"/>
+        <result property="brokerageLevel" column="brokerage_level" jdbcType="TINYINT"/>
+        <result property="brokerageName" column="brokerage_name" jdbcType="VARCHAR"/>
+        <result property="brokerageIcon" column="brokerage_icon" jdbcType="VARCHAR"/>
+        <result property="brokerageRule" column="brokerage_rule" jdbcType="VARCHAR"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="value" column="value" jdbcType="INTEGER"/>
+        <result property="userNum" column="user_num" jdbcType="INTEGER"/>
+        <result property="extensionOne" column="extension_one" jdbcType="DECIMAL"/>
+        <result property="extensionTwo" column="extension_two" jdbcType="DECIMAL"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+        <result property="integralRatio" column="integral_ratio" jdbcType="DECIMAL"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_brokerage_id
+        ,brokerage_level,brokerage_name,
+        brokerage_icon,brokerage_rule,image,
+        value,user_num,extension_one,
+        extension_two,create_time,update_time,
+        type,integral_ratio,status
+    </sql>
+</mapper>

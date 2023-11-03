@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.user.MemberInterestsMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.user.MemberInterests">
+        <id property="interestsId" column="interests_id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="info" column="info" jdbcType="VARCHAR"/>
+        <result property="brokerageLevel" column="brokerage_level" jdbcType="TINYINT"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        interests_id
+        ,name,info,
+        brokerage_level,pic,type,
+        create_time,update_time,status
+    </sql>
+</mapper>

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hj.mapper.FeedbackCategoryMapper">
+<mapper namespace="com.hj.mapper.user.FeedbackCategoryMapper">
 
-    <resultMap id="BaseResultMap" type="com.hj.entity.FeedbackCategory">
+    <resultMap id="BaseResultMap" type="com.hj.entity.user.FeedbackCategory">
         <id property="feedbackCategoryId" column="feedback_category_id" jdbcType="INTEGER"/>
         <result property="pid" column="pid" jdbcType="INTEGER"/>
         <result property="cateName" column="cate_name" jdbcType="VARCHAR"/>
@@ -27,7 +27,7 @@
         create_time,update_time,status
     </sql>
 
-    <select id="getParentFeedbackCategory" parameterType="hashmap" resultType="com.hj.vo.FeedbackCategoryVo">
+    <select id="getParentFeedbackCategory" parameterType="hashmap" resultType="com.hj.vo.user.FeedbackCategoryVo">
         select
         <include refid="Base_Column_List"></include>
         from eb_feedback_category efc

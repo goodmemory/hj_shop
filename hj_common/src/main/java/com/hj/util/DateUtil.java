@@ -1,5 +1,7 @@
 package com.hj.util;
 
+import cn.hutool.core.codec.Base64;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ public class DateUtil {
 
     //时间格式
     public static final String PATTERN_YYYYMMDDHH = "yyyyMMddHH";
+    public static final String PATTERN_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
     public static final String PATTERN_YYYY_MM_DDHHMM = "yyyy-MM-dd HH:mm";
 
     /***
@@ -138,12 +141,23 @@ public class DateUtil {
         return dtNow;
     }
 
+    /**
+     * 获取当前时间：格式"yyyyMMddHHmmss"
+     *
+     * @return
+     */
+    public static String getCurrentDate() {
+        // 获取当前时间的时间戳（毫秒数）
+        long currentTimeMillis = System.currentTimeMillis();
+        // 创建SimpleDateFormat对象，指定时间格式为YYYYMMDDHHMMSS
+        SimpleDateFormat sdf = new SimpleDateFormat(PATTERN_YYYYMMDDHHMMSS);
+        // 使用SimpleDateFormat对象将时间戳格式化为指定格式的字符串
+        String timestamp = sdf.format(currentTimeMillis);
+        return timestamp;
+    }
+
     public static void main(String[] args) {
-        //返回时间菜单列表
-        List<Date> dateMenus = getDateMenus();
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHH");
-        for (Date dateMenu : dateMenus) {
-            System.out.println(format.format(dateMenu));
-        }
+        System.out.println(Base64.encode("123456"));
+        System.out.println(Base64.decode("MTIzNDU2"));
     }
 }

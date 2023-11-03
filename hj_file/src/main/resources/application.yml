@@ -4,6 +4,8 @@ spring:
     multipart:
       max-file-size: 10MB      #单个文件的最大限制
       max-request-size: 30MB   #设置上传文件的总大小
+  profiles:
+    active: myq
 server:
   port: 9008
 eureka:

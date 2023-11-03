@@ -105,6 +105,14 @@
             <artifactId>knife4j-springdoc-ui</artifactId>
             <version>3.0.3</version>
         </dependency>
+
+        <!-- 糊涂工具包-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.16</version>
+        </dependency>
+
     </dependencies>
 
 </project>

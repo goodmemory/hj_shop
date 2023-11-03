@@ -1,5 +1,7 @@
 package com.hj.entity;
 
+import com.hj.enums.ResponseStatusEnum;
+
 import java.util.Map;
 
 /**

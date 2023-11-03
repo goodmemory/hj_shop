@@ -3,16 +3,10 @@ server:
 spring:
   application:
     name: system
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hj_db?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: 12345678
   main:
     allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
-#  mvc:
-#    pathmatch:
-#      matching-strategy: ant_path_matcher
+  profiles:
+    active: myq
 eureka:
   client:
     service-url:
@@ -40,8 +34,6 @@ hystrix:
           thread:
             # 熔断器超时时间，默认：1000/毫秒
             timeoutInMilliseconds: 20000
-
-
 mybatis-plus:
   mapper-locations: mapper/*.xml
   configuration:
@@ -53,3 +45,13 @@ mybatis-plus:
 
 workerId: 1
 datacenterId: 1
+
+# 分页插件助手的配置
+pagehelper:
+  helper-dialect: MYSQL
+  support-methods-arguments: true
+
+# 日志级别
+logging:
+  level:
+    root: info

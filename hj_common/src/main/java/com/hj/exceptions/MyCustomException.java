@@ -1,7 +1,7 @@
 package com.hj.exceptions;
 
 
-import com.hj.entity.ResponseStatusEnum;
+import com.hj.enums.ResponseStatusEnum;
 
 /**
  * 自定义异常

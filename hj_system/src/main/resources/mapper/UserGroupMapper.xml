@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hj.mapper.UserGroupMapper">
+<mapper namespace="com.hj.mapper.user.UserGroupMapper">
 
-    <resultMap id="BaseResultMap" type="com.hj.entity.UserGroup">
+    <resultMap id="BaseResultMap" type="com.hj.entity.user.UserGroup">
         <id property="groupId" column="group_id" jdbcType="SMALLINT"/>
         <result property="groupName" column="group_name" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
