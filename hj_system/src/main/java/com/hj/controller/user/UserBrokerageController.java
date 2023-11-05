@@ -28,7 +28,7 @@ public class UserBrokerageController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有会员等级数据")
     public GraceJSONResult getMemberInterestsList(@RequestParam Integer page,
                                                   @RequestParam Integer pageSize) {

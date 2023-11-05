@@ -200,7 +200,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
     @Override
     public void deleteArticle(String articleId) {
         if (StringUtils.isEmpty(articleId)) {
-            log.error("updateArticle===>updateArticle:" + ResponseStatusEnum.ARTICLE_ID_NOT_NULL.msg());
+            log.error("ArticleServiceImpl===>deleteArticle:" + ResponseStatusEnum.ARTICLE_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.ARTICLE_ID_NOT_NULL);
         }
         boolean flag = this.update(new LambdaUpdateWrapper<Article>()
@@ -208,7 +208,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
                 .set(Article::getUpdateTime, DateUtil.getCurrentDate())
                 .eq(Article::getArticleId, articleId));
         if (!flag) {
-            log.error("ArticleServiceImpl===>updateArticle:" + ResponseStatusEnum.SYSTEM_OPERATION_ERROR.msg());
+            log.error("ArticleServiceImpl===>deleteArticle:" + ResponseStatusEnum.SYSTEM_OPERATION_ERROR.msg());
             GraceException.display(ResponseStatusEnum.SYSTEM_OPERATION_ERROR);
         } else {
             //修改文章内容到内容表

@@ -24,7 +24,7 @@ public class FeedbackCategoryController {
     @Autowired
     private FeedbackCategoryService feedbackCategoryService;
 
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有用户投诉分类列表数据")
     public Result getFeedbackList(@RequestParam Integer page,
                                   @RequestParam Integer pageSize) {

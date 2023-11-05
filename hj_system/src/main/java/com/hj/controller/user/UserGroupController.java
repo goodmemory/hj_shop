@@ -31,7 +31,7 @@ public class UserGroupController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有用户组数据")
     public Result getUserGroupList(@RequestParam Integer page,
                                    @RequestParam Integer pageSize) {

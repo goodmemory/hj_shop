@@ -28,7 +28,7 @@ public class MemberInterestsController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有会员权益数据")
     public GraceJSONResult getMemberInterestsList(@RequestParam Integer page,
                                                   @RequestParam Integer pageSize) {

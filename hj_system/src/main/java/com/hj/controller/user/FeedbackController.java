@@ -28,7 +28,7 @@ public class FeedbackController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有用户投诉列表数据")
     public GraceJSONResult getFeedbackList(@RequestParam(defaultValue = "") String keyword, @RequestParam Integer page,
                                            @RequestParam Integer pageSize) {

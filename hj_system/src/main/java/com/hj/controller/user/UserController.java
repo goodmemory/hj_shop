@@ -28,7 +28,7 @@ public class UserController {
     /**
      * 分页获取用户信息
      */
-    @PostMapping("/lst")
+    @PostMapping("/list")
     @ApiOperation(value = "分页获取用户信息")
     public GraceJSONResult getUserList(@RequestBody UserBo bo) {
         if (bo.getPage() == 0) {

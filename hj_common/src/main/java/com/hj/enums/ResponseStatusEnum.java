@@ -106,6 +106,15 @@ public enum ResponseStatusEnum {
     ARTICLE_ID_NOT_NULL(634, false, "文章ID不能为空！"),
     ARTICLE_NOT_EXIST(635, false, "文章不存在！"),
 
+    //文章分类
+    ARTICLE_CATEGORY_TITLE_NOT_NULL(640, false, "文章分类标题不能为空！"),
+    ARTICLE_CATEGORY_ID_NOT_NULL(641, false, "文章分类ID不能为空！"),
+    ARTICLE_CATEGORY_NOT_EXIST(642, false, "文章分类不存在！"),
+
+    //商户分类
+    MERCHANT_CATEGORY_NAME_NOT_NULL(645, false, "商户分类名称不能为空！"),
+    MERCHANT_CATEGORY_ID_NOT_NULL(646, false, "商户分类ID不能为空！"),
+
     // 系统错误，未预期的错误 555
     SYSTEM_ERROR(555, false, "系统繁忙，请稍后再试！"),
     SYSTEM_OPERATION_ERROR(556, false, "操作失败，请重试或联系管理员"),

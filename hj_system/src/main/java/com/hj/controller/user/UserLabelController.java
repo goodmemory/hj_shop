@@ -31,7 +31,7 @@ public class UserLabelController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有用户标签数据")
     public Result getUserLabelList(@RequestParam Integer page,
                                    @RequestParam Integer pageSize) {
