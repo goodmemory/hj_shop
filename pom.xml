@@ -16,6 +16,7 @@
         <module>hj_oauth</module>
         <module>hj_file</module>
         <module>hj_system</module>
+        <module>hj_goods</module>
     </modules>
 
     <parent>

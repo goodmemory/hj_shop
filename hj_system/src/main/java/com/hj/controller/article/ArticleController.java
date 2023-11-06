@@ -29,7 +29,7 @@ public class ArticleController {
      * @param pageSize
      * @return
      */
-    @GetMapping("/lst")
+    @GetMapping("/list")
     @ApiOperation(value = "获取所有文章列表数据")
     public GraceJSONResult getMemberInterestsList(@RequestParam(defaultValue = "") String title, @RequestParam(defaultValue = "") Integer page,
                                                   @RequestParam(defaultValue = "") Integer pageSize) {

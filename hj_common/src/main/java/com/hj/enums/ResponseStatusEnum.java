@@ -115,6 +115,17 @@ public enum ResponseStatusEnum {
     MERCHANT_CATEGORY_NAME_NOT_NULL(645, false, "商户分类名称不能为空！"),
     MERCHANT_CATEGORY_ID_NOT_NULL(646, false, "商户分类ID不能为空！"),
 
+    //商品分类
+    STORE_CATEGORY_NAME_NOT_NULL(660, false, "商品分类名称不能为空！"),
+    STORE_CATEGORY_ID_NOT_NULL(661, false, "商品分类ID不能为空！"),
+    STORE_PID_NOT_NULL(662, false, "上级分类不能为空！"),
+
+    //商品品牌分类
+    STORE_BRAND_CATEGORY_NAME_NOT_NULL(665, false, "商品品牌分类名称不能为空！"),
+    STORE_BRAND_CATEGORY_ID_NOT_NULL(666, false, "商品品牌分类ID不能为空！"),
+    STORE_BRAND_CATEGORY_PID_NOT_NULL(667, false, "上级品牌分类不能为空！"),
+    STORE_BRAND_CATEGORY_LOWER(668, false, "不可添加更低阶分类！"),
+
     // 系统错误，未预期的错误 555
     SYSTEM_ERROR(555, false, "系统繁忙，请稍后再试！"),
     SYSTEM_OPERATION_ERROR(556, false, "操作失败，请重试或联系管理员"),
