@@ -11,6 +11,7 @@ import com.hj.exceptions.GraceException;
 import com.hj.mapper.user.UserBrokerageMapper;
 import com.hj.service.user.UserBrokerageService;
 import com.hj.util.DateUtil;
+import com.hj.util.IdWorker;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.user.UserBrokerageVo;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,8 @@ public class UserBrokerageServiceImpl extends ServiceImpl<UserBrokerageMapper, U
 
     @Autowired
     private UserBrokerageMapper userBrokerageMapper;
+    @Autowired
+    private IdWorker idWorker;
 
     /**
      * 获取所有会员权益分页显示
@@ -68,6 +71,7 @@ public class UserBrokerageServiceImpl extends ServiceImpl<UserBrokerageMapper, U
             log.error("UserBrokerageServiceImpl===>insertUserBrokerage:" + ResponseStatusEnum.MEMBER_LEVEL_NOT_SAME.msg());
             GraceException.display(ResponseStatusEnum.MEMBER_LEVEL_NOT_SAME);
         }
+        userBrokerage.setUserBrokerageId(idWorker.nextId());
         int index = userBrokerageMapper.insert(userBrokerage);
         if (index == 0) {
             log.error("UserBrokerageServiceImpl===>insertUserBrokerage:" + ResponseStatusEnum.SYSTEM_OPERATION_ERROR.msg());
@@ -118,7 +122,7 @@ public class UserBrokerageServiceImpl extends ServiceImpl<UserBrokerageMapper, U
      * @return
      */
     @Override
-    public UserBrokerageVo getUserBrokerageById(Integer userBrokerageId) {
+    public UserBrokerageVo getUserBrokerageById(Long userBrokerageId) {
         if (userBrokerageId == null) {
             log.error("UserBrokerageServiceImpl===>getUserBrokerageById:" + ResponseStatusEnum.MEMBER_LEVEL_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.MEMBER_LEVEL_ID_NOT_NULL);
@@ -157,7 +161,7 @@ public class UserBrokerageServiceImpl extends ServiceImpl<UserBrokerageMapper, U
      * @param userBrokerageId
      */
     @Override
-    public void deleteUserBrokerage(Integer userBrokerageId) {
+    public void deleteUserBrokerage(Long userBrokerageId) {
         if (userBrokerageId == null) {
             log.error("UserBrokerageServiceImpl===>deleteUserBrokerage:" + ResponseStatusEnum.MEMBER_LEVEL_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.MEMBER_LEVEL_ID_NOT_NULL);

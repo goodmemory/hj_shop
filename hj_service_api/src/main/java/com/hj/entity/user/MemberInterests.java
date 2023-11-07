@@ -1,6 +1,5 @@
 package com.hj.entity.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -18,8 +17,8 @@ public class MemberInterests implements Serializable {
     /**
      *
      */
-    @TableId(type = IdType.AUTO)
-    private Integer interestsId;
+    @TableId
+    private Long interestsId;
 
     /**
      * 名称

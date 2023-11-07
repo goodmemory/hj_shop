@@ -7,12 +7,12 @@ public class StoreCategoryBo {
     /**
      * 商品分类表ID
      */
-    private String storeCategoryId;
+    private Long storeCategoryId;
 
     /**
      * 父id
      */
-    private String pid;
+    private Long pid;
 
     /**
      * 分类名称

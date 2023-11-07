@@ -70,9 +70,9 @@ public class UserGroupController {
      * @param groupId
      * @return
      */
-    @GetMapping("/{id}")
+    @GetMapping("/getUserGroupInfoById/{groupId}")
     @ApiOperation(value = "根据id查询用户组数据")
-    public Result getUserGroupInfoById(@PathVariable Integer groupId) {
+    public Result getUserGroupInfoById(@PathVariable Long groupId) {
         if (groupId == null) {
             return new Result(Boolean.FALSE, StatusCode.ERROR, "操作失败", ConstantParams.GROUP_ID_NOT_ALLOW_NULL);
         }
@@ -106,9 +106,9 @@ public class UserGroupController {
      * @param groupId
      * @return
      */
-    @GetMapping("/delete")
+    @GetMapping("/delete/{groupId}")
     @ApiOperation(value = "删除用户组")
-    public Result deleteUserGroupById(@RequestParam Integer groupId) {
+    public Result deleteUserGroupById(@PathVariable Long groupId) {
         if (groupId == null) {
             return new Result(Boolean.FALSE, StatusCode.ERROR, "操作失败", ConstantParams.GROUP_ID_NOT_ALLOW_NULL);
         }

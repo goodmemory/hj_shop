@@ -1,6 +1,5 @@
 package com.hj.entity.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -20,13 +19,13 @@ public class Feedback implements Serializable {
     /**
      *
      */
-    @TableId(type = IdType.AUTO)
-    private Integer feedbackId;
+    @TableId
+    private Long feedbackId;
 
     /**
      *
      */
-    private Integer uid;
+    private Long uid;
 
     /**
      *

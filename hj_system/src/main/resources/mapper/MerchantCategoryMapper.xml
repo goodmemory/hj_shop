@@ -5,7 +5,7 @@
 <mapper namespace="com.hj.mapper.merchant.MerchantCategoryMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.merchant.MerchantCategory">
-        <id property="merchantCategoryId" column="merchant_category_id" jdbcType="INTEGER"/>
+        <id property="merchantCategoryId" column="merchant_category_id" jdbcType="BIGINT"/>
         <result property="commissionRate" column="commission_rate" jdbcType="DECIMAL"/>
         <result property="categoryName" column="category_name" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>

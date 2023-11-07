@@ -5,7 +5,7 @@
 <mapper namespace="com.hj.mapper.article.ArticleContentMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.article.ArticleContent">
-        <result property="articleContentId" column="article_content_id" jdbcType="INTEGER"/>
+        <result property="articleContentId" column="article_content_id" jdbcType="BIGINT"/>
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="INTEGER"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>

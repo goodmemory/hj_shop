@@ -10,6 +10,8 @@ public class ConstantParams {
     public static final Integer COMMON_STATUS_2 = 2;
     public static final Integer COMMON_STATUS_1 = 1; //未删除
     public static final Integer COMMON_STATUS_0 = 0; //已删除
+    public static final Long COMMON_STATUS_LONG1 = 1L;
+    public static final Long COMMON_STATUS_LONG0 = 0L;
     public static final String COMMON_STATUS_STR1 = "1";
     public static final String COMMON_STATUS_STR0 = "0";
     public static final String SERVER_ERROR = "服务器错误，请联系管理员！";

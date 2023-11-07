@@ -17,11 +17,11 @@ import java.util.List;
  */
 public interface StoreCategoryMapper extends BaseMapper<StoreCategory> {
 
-    List<StoreCategoryVo> getStoreCategoryListAll(@Param("pid") String pid);
+    List<StoreCategoryVo> getStoreCategoryListAll(@Param("pid") Long pid);
 
-    List<StoreCategoryOneVo> getStoreCategoryNotEqLevel2List(@Param("pid") String pid);
+    List<StoreCategoryOneVo> getStoreCategoryNotEqLevel2List(@Param("pid") Long pid);
 
-    List<StoreCategoryTwoVo> getStoreCategoryById(@Param("id") String storeCategoryId);
+    List<StoreCategoryTwoVo> getStoreCategoryById(@Param("id") Long storeCategoryId);
 }
 
 

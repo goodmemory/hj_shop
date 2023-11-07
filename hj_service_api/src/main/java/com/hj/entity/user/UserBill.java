@@ -21,17 +21,17 @@ public class UserBill implements Serializable {
      * 用户账单id
      */
     @TableId
-    private String billId;
+    private Long billId;
 
     /**
      * 用户uid
      */
-    private String uid;
+    private Long uid;
 
     /**
      * 关联id
      */
-    private String linkId;
+    private Long linkId;
 
     /**
      * 0 = 支出 1 = 获得

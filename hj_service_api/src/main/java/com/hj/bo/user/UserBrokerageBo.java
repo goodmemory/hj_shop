@@ -7,7 +7,8 @@ import java.util.Date;
 
 @Data
 public class UserBrokerageBo {
-    private Integer userBrokerageId;
+
+    private Long userBrokerageId;
 
     /**
      * 等级

@@ -16,9 +16,9 @@ import java.util.List;
  */
 public interface StoreBrandCategoryMapper extends BaseMapper<StoreBrandCategory> {
 
-    List<StoreBrandCategoryVo> getStoreBrandCategoryPage(@Param("pid") String pid);
+    List<StoreBrandCategoryVo> getStoreBrandCategoryPage(@Param("pid") Long pid);
 
-    List<StoreBrandCategoryOneVo> getStoreBrandCategoryAllList(@Param("pid") String pid);
+    List<StoreBrandCategoryOneVo> getStoreBrandCategoryAllList(@Param("pid") Long pid);
 }
 
 

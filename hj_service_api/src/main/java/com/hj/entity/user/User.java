@@ -21,12 +21,12 @@ public class User implements Serializable {
      * 用户id
      */
     @TableId
-    private String uid;
+    private Long uid;
 
     /**
      * 微信用户 id
      */
-    private Integer wechatUserId;
+    private Long wechatUserId;
 
     /**
      * 用户账号
@@ -66,12 +66,12 @@ public class User implements Serializable {
     /**
      * 用户标签 id
      */
-    private Integer labelId;
+    private Long labelId;
 
     /**
      * 用户分组id
      */
-    private Integer groupId;
+    private Long groupId;
 
     /**
      * 用户昵称

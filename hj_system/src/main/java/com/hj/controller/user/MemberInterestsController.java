@@ -74,9 +74,9 @@ public class MemberInterestsController {
      * @param interestsId
      * @return
      */
-    @PutMapping("/delete")
+    @PutMapping("/delete/{interestsId}")
     @ApiOperation(value = "删除会员权益")
-    public GraceJSONResult deleteMemberInterests(@RequestParam Integer interestsId) {
+    public GraceJSONResult deleteMemberInterests(@PathVariable Long interestsId) {
         memberInterestsService.deleteMemberInterests(interestsId);
         return GraceJSONResult.ok();
     }

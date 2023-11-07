@@ -20,12 +20,12 @@ public class Article implements Serializable {
      * 文章管理ID
      */
     @TableId
-    private String articleId;
+    private Long articleId;
 
     /**
      * 分类id
      */
-    private Integer cid;
+    private Long cid;
 
     /**
      * 文章标题

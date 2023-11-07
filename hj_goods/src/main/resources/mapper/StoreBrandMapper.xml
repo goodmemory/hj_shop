@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.StoreBrandMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.store.StoreBrand">
+        <id property="brandId" column="brand_id" jdbcType="BIGINT"/>
+        <result property="brandCategoryId" column="brand_category_id" jdbcType="BIGINT"/>
+        <result property="brandName" column="brand_name" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="pic" column="pic" jdbcType="VARCHAR"/>
+        <result property="isShow" column="is_show" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        brand_id
+        ,brand_category_id,brand_name,
+        sort,pic,is_show,
+        create_time,update_time,status
+    </sql>
+</mapper>

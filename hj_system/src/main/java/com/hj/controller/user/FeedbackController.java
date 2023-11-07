@@ -61,9 +61,9 @@ public class FeedbackController {
      * @param feedbackId
      * @return
      */
-    @PutMapping("/delete")
+    @PutMapping("/delete/{feedbackId}")
     @ApiOperation(value = "删除用户投诉")
-    public GraceJSONResult deleteContent(@RequestParam Integer feedbackId) {
+    public GraceJSONResult deleteContent(@PathVariable Long feedbackId) {
         feedbackService.deleteContent(feedbackId);
         return GraceJSONResult.ok();
     }

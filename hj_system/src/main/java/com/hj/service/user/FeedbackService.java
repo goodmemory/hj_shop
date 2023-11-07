@@ -36,6 +36,6 @@ public interface FeedbackService extends IService<Feedback> {
      * @param feedbackId
      * @return
      */
-    void deleteContent(Integer feedbackId);
+    void deleteContent(Long feedbackId);
 
 }

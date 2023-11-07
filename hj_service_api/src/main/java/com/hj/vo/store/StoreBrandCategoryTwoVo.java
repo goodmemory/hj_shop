@@ -9,12 +9,12 @@ public class StoreBrandCategoryTwoVo {
     /**
      * 品牌分类表ID
      */
-    private String storeBrandCategoryId;
+    private Long storeBrandCategoryId;
 
     /**
      * 父id
      */
-    private String pid;
+    private Long pid;
 
     /**
      * 分类名称

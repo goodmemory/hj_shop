@@ -1,6 +1,5 @@
 package com.hj.entity.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -19,8 +18,8 @@ public class UserBrokerage implements Serializable {
     /**
      *
      */
-    @TableId(type = IdType.AUTO)
-    private Integer userBrokerageId;
+    @TableId
+    private Long userBrokerageId;
 
     /**
      * 等级

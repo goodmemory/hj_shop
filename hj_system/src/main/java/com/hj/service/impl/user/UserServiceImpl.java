@@ -78,10 +78,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (StringUtils.isNotEmpty(bo.getPhone())) {
             wrapper.eq(User::getPhone, bo.getPhone());
         }
-        if (bo.getGroupId() != ConstantParams.COMMON_STATUS_0) {
+        if (StringUtils.isEmpty(String.valueOf(bo.getGroupId()))) {
             wrapper.eq(User::getGroupId, bo.getGroupId());
         }
-        if (bo.getLabelId() != ConstantParams.COMMON_STATUS_0) {
+        if (StringUtils.isEmpty(String.valueOf(bo.getLabelId()))) {
             wrapper.eq(User::getLabelId, bo.getLabelId());
         }
         if (bo.getSex() != null) {
@@ -122,7 +122,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
         User user = new User();
         BeanUtils.copyProperties(bo, user);
-        user.setUid("u" + idWorker.nextId());
+        user.setUid(idWorker.nextId());
         user.setUserType(UserEnum.USER_HJ.tag());
         user.setPwd(AESUtil.encryptAES(bo.getPwd()));
         int index = userMapper.insert(user);
@@ -140,7 +140,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     @Override
     public void updateUser(UserBo bo) {
         validateUserInfo(bo);
-        if (StringUtils.isEmpty(bo.getUid())) {
+        if (StringUtils.isEmpty(String.valueOf(bo.getUid()))) {
             log.error("UserServiceImpl===>getUserById:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }
@@ -201,8 +201,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @return
      */
     @Override
-    public UserVo getUserById(String uid) {
-        if (StringUtils.isEmpty(uid)) {
+    public UserVo getUserById(Long uid) {
+        if (StringUtils.isEmpty(String.valueOf(uid))) {
             log.error("UserServiceImpl===>getUserById:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }
@@ -228,8 +228,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @param type     0：红旌币减少 1:红旌币增加
      */
     @Override
-    public void setupMoney(String uid, BigDecimal nowMoney, Integer type) {
-        if (StringUtils.isEmpty(uid)) {
+    public void setupMoney(Long uid, BigDecimal nowMoney, Integer type) {
+        if (StringUtils.isEmpty(String.valueOf(uid))) {
             log.error("UserServiceImpl===>setupMoney:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }
@@ -240,7 +240,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         UserBill userBill = new UserBill();
         userBill.setUid(uid);
         userBill.setPm(type);
-        userBill.setBillId("b" + idWorker.nextId());
+        userBill.setBillId(idWorker.nextId());
         userBill.setCategory("now_money");
         userBill.setType("sys_inc_money");
 
@@ -278,8 +278,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @param type
      */
     @Override
-    public void setupIntegral(String uid, Integer nowIntegral, Integer type) {
-        if (StringUtils.isEmpty(uid)) {
+    public void setupIntegral(Long uid, Integer nowIntegral, Integer type) {
+        if (StringUtils.isEmpty(String.valueOf(uid))) {
             log.error("UserServiceImpl===>setupMoney:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }
@@ -346,8 +346,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @param spreadUid
      */
     @Override
-    public void setupSpreadUser(String uid, String spreadUid) {
-        if (StringUtils.isEmpty(uid)) {
+    public void setupSpreadUser(Long uid, String spreadUid) {
+        if (StringUtils.isEmpty(String.valueOf(uid))) {
             log.error("UserServiceImpl===>setupSpreadUser:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }
@@ -397,8 +397,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @param memberLevel
      */
     @Override
-    public void setupMemberLevel(String uid, Integer memberLevel) {
-        if (StringUtils.isEmpty(uid)) {
+    public void setupMemberLevel(Long uid, Integer memberLevel) {
+        if (StringUtils.isEmpty(String.valueOf(uid))) {
             log.error("UserServiceImpl===>setupMemberLevel:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }
@@ -418,8 +418,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
      * @return
      */
     @Override
-    public PagedGridResult getMoneyInfo(String uid, Integer page, Integer pageSize) {
-        if (StringUtils.isEmpty(uid)) {
+    public PagedGridResult getMoneyInfo(Long uid, Integer page, Integer pageSize) {
+        if (StringUtils.isEmpty(String.valueOf(uid))) {
             log.error("UserServiceImpl===>setupMemberLevel:" + ResponseStatusEnum.USER_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.USER_ID_NOT_NULL);
         }

@@ -1,6 +1,5 @@
 package com.hj.entity.merchant;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -21,7 +20,7 @@ public class MerchantCategory implements Serializable {
     /**
      * 商户分类 id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId
     private Integer merchantCategoryId;
 
     /**

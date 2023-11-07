@@ -35,7 +35,7 @@ public interface UserGroupService extends IService<UserGroup> {
      * @param groupId
      * @return
      */
-    UserGroupVo getUserGroupInfoById(Integer groupId);
+    UserGroupVo getUserGroupInfoById(Long groupId);
 
     /**
      * 修改用户组
@@ -51,5 +51,5 @@ public interface UserGroupService extends IService<UserGroup> {
      * @param groupId
      * @return
      */
-    Boolean deleteUserGroupById(Integer groupId);
+    Boolean deleteUserGroupById(Long groupId);
 }

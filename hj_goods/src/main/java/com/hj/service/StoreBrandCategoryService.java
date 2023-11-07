@@ -51,7 +51,7 @@ public interface StoreBrandCategoryService extends IService<StoreBrandCategory> 
      *
      * @param storeBrandCategoryId
      */
-    void updateIsShow(String storeBrandCategoryId, Integer isShow);
+    void updateIsShow(Long storeBrandCategoryId, Integer isShow);
 
     /**
      * 根据id获取数据
@@ -59,12 +59,12 @@ public interface StoreBrandCategoryService extends IService<StoreBrandCategory> 
      * @param storeBrandCategoryId
      * @return
      */
-    StoreBrandCategoryTwoVo getStoreBrandCategoryById(String storeBrandCategoryId);
+    StoreBrandCategoryTwoVo getStoreBrandCategoryById(Long storeBrandCategoryId);
 
     /**
      * 删除品牌分类数据
      *
      * @param storeBrandCategoryId
      */
-    void deleteStoreBrandCategory(String storeBrandCategoryId);
+    void deleteStoreBrandCategory(Long storeBrandCategoryId);
 }

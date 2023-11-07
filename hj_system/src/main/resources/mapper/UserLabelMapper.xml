@@ -5,9 +5,9 @@
 <mapper namespace="com.hj.mapper.user.UserLabelMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.user.UserLabel">
-        <id property="labelId" column="label_id" jdbcType="INTEGER"/>
+        <id property="labelId" column="label_id" jdbcType="BIGINT"/>
         <result property="labelName" column="label_name" jdbcType="VARCHAR"/>
-        <result property="merId" column="mer_id" jdbcType="INTEGER"/>
+        <result property="merId" column="mer_id" jdbcType="BIGINT"/>
         <result property="type" column="type" jdbcType="TINYINT"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>

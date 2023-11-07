@@ -5,7 +5,7 @@
 <mapper namespace="com.hj.mapper.user.UserGroupMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.user.UserGroup">
-        <id property="groupId" column="group_id" jdbcType="SMALLINT"/>
+        <id property="groupId" column="group_id" jdbcType="BIGINT"/>
         <result property="groupName" column="group_name" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>

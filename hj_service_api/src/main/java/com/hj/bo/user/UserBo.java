@@ -11,7 +11,7 @@ public class UserBo {
 
     private Integer pageSize;
 
-    private String uid;
+    private Long uid;
 
     private String account;
 
@@ -63,12 +63,12 @@ public class UserBo {
     /**
      * 用户标签 id
      */
-    private Integer labelId;
+    private Long labelId;
 
     /**
      * 用户分组id
      */
-    private Integer groupId;
+    private Long groupId;
 
     /**
      * 用户购买次数

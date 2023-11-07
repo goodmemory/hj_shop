@@ -9,12 +9,12 @@ public class ArticleVo {
     /**
      * 文章管理ID
      */
-    private String articleId;
+    private Long articleId;
 
     /**
      * 分类id
      */
-    private Integer cid;
+    private Long cid;
 
     /**
      * 文章标题

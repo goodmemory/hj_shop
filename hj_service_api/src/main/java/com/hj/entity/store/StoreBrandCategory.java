@@ -20,12 +20,12 @@ public class StoreBrandCategory implements Serializable {
      * 品牌分类表ID
      */
     @TableId
-    private String storeBrandCategoryId;
+    private Long storeBrandCategoryId;
 
     /**
      * 父id
      */
-    private String pid;
+    private Long pid;
 
     /**
      * 分类名称

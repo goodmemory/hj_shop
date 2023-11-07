@@ -44,7 +44,7 @@ public interface UserService extends IService<User> {
      * @param uid
      * @return
      */
-    UserVo getUserById(String uid);
+    UserVo getUserById(Long uid);
 
     /**
      * 设置红旌币
@@ -53,7 +53,7 @@ public interface UserService extends IService<User> {
      * @param nowMoney
      * @param type
      */
-    void setupMoney(String uid, BigDecimal nowMoney, Integer type);
+    void setupMoney(Long uid, BigDecimal nowMoney, Integer type);
 
     /**
      * 设置积分
@@ -62,7 +62,7 @@ public interface UserService extends IService<User> {
      * @param nowIntegral
      * @param type
      */
-    void setupIntegral(String uid, Integer nowIntegral, Integer type);
+    void setupIntegral(Long uid, Integer nowIntegral, Integer type);
 
     /**
      * 设置用户组（批量）
@@ -84,7 +84,7 @@ public interface UserService extends IService<User> {
      * @param uid
      * @param spreadUid
      */
-    void setupSpreadUser(String uid, String spreadUid);
+    void setupSpreadUser(Long uid, String spreadUid);
 
     /**
      * 修改密码
@@ -100,7 +100,7 @@ public interface UserService extends IService<User> {
      *
      * @param memberLevel
      */
-    void setupMemberLevel(String uid, Integer memberLevel);
+    void setupMemberLevel(Long uid, Integer memberLevel);
 
     /**
      * 用户详情：红旌币变动
@@ -110,5 +110,5 @@ public interface UserService extends IService<User> {
      * @param pageSize
      * @return
      */
-    PagedGridResult getMoneyInfo(String uid, Integer page, Integer pageSize);
+    PagedGridResult getMoneyInfo(Long uid, Integer page, Integer pageSize);
 }

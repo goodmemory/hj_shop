@@ -35,7 +35,7 @@ public interface UserLabelService extends IService<UserLabel> {
      * @param labelId
      * @return
      */
-    UserLabelVo getUserLabelInfoById(Integer labelId);
+    UserLabelVo getUserLabelInfoById(Long labelId);
 
     /**
      * 修改用户标签
@@ -51,6 +51,6 @@ public interface UserLabelService extends IService<UserLabel> {
      * @param labelId
      * @return
      */
-    Boolean deleteUserLabelById(Integer labelId);
+    Boolean deleteUserLabelById(Long labelId);
 
 }

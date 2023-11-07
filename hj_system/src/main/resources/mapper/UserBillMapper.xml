@@ -5,9 +5,9 @@
 <mapper namespace="com.hj.mapper.user.UserBillMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.user.UserBill">
-        <id property="billId" column="bill_id" jdbcType="INTEGER"/>
-        <result property="uid" column="uid" jdbcType="INTEGER"/>
-        <result property="linkId" column="link_id" jdbcType="VARCHAR"/>
+        <id property="billId" column="bill_id" jdbcType="BIGINT"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="linkId" column="link_id" jdbcType="BIGINT"/>
         <result property="pm" column="pm" jdbcType="TINYINT"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
         <result property="category" column="category" jdbcType="VARCHAR"/>

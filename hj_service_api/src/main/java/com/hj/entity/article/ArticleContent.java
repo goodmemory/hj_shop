@@ -20,11 +20,11 @@ public class ArticleContent implements Serializable {
      * 文章内容id
      */
     @TableId
-    private String articleContentId;
+    private Long articleContentId;
     /**
      * 文章id
      */
-    private String articleId;
+    private Long articleId;
 
     /**
      * 文章内容

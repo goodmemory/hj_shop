@@ -5,8 +5,8 @@
 <mapper namespace="com.hj.mapper.article.ArticleCategoryMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.article.ArticleCategory">
-        <id property="articleCategoryId" column="article_category_id" jdbcType="INTEGER"/>
-        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <id property="articleCategoryId" column="article_category_id" jdbcType="BIGINT"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
         <result property="merId" column="mer_id" jdbcType="INTEGER"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
         <result property="info" column="info" jdbcType="VARCHAR"/>

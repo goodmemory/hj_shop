@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class MemberInterestsBo {
 
-    private Integer interestsId;
+    private Long interestsId;
 
     private String name;
 

@@ -63,7 +63,7 @@ public class UserBrokerageController {
      */
     @GetMapping("/getInfo")
     @ApiOperation(value = "根军id获取会员等级信息")
-    public GraceJSONResult getUserBrokerageById(@RequestParam Integer userBrokerageId) {
+    public GraceJSONResult getUserBrokerageById(@RequestParam Long userBrokerageId) {
         return GraceJSONResult.ok(userBrokerageService.getUserBrokerageById(userBrokerageId));
     }
 
@@ -86,9 +86,9 @@ public class UserBrokerageController {
      * @param userBrokerageId
      * @return
      */
-    @PutMapping("/delete")
+    @PutMapping("/delete/{userBrokerageId}")
     @ApiOperation(value = "删除会员等级")
-    public GraceJSONResult deleteUserBrokerage(@RequestParam Integer userBrokerageId) {
+    public GraceJSONResult deleteUserBrokerage(@PathVariable Long userBrokerageId) {
         userBrokerageService.deleteUserBrokerage(userBrokerageId);
         return GraceJSONResult.ok();
     }

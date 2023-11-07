@@ -11,6 +11,7 @@ import com.hj.exceptions.GraceException;
 import com.hj.mapper.user.MemberInterestsMapper;
 import com.hj.service.user.MemberInterestsService;
 import com.hj.util.DateUtil;
+import com.hj.util.IdWorker;
 import com.hj.util.PagedGridResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -32,6 +33,8 @@ public class MemberInterestsServiceImpl extends ServiceImpl<MemberInterestsMappe
 
     @Autowired
     private MemberInterestsMapper memberInterestsMapper;
+    @Autowired
+    private IdWorker idWorker;
 
     /**
      * 获取所有会员权益分页显示
@@ -73,6 +76,7 @@ public class MemberInterestsServiceImpl extends ServiceImpl<MemberInterestsMappe
         }
         MemberInterests memberInterests = new MemberInterests();
         BeanUtils.copyProperties(bo, memberInterests);
+        memberInterests.setInterestsId(idWorker.nextId());
         int index = memberInterestsMapper.insert(memberInterests);
         if (index == 0) {
             log.error("MemberInterestsServiceImpl===>insertMemberInterests:" + ResponseStatusEnum.SYSTEM_OPERATION_ERROR.msg());
@@ -115,7 +119,7 @@ public class MemberInterestsServiceImpl extends ServiceImpl<MemberInterestsMappe
      * @param interestsId
      */
     @Override
-    public void deleteMemberInterests(Integer interestsId) {
+    public void deleteMemberInterests(Long interestsId) {
         if (interestsId == null) {
             log.error("MemberInterestsServiceImpl===>deleteMemberInterests:" + ResponseStatusEnum.MEMBER_INTERESTS_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.MEMBER_INTERESTS_ID_NOT_NULL);

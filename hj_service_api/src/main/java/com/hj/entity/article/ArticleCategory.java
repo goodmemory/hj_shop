@@ -1,6 +1,5 @@
 package com.hj.entity.article;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -20,18 +19,18 @@ public class ArticleCategory implements Serializable {
     /**
      * 文章分类id
      */
-    @TableId(type = IdType.AUTO)
-    private Integer articleCategoryId;
+    @TableId
+    private Long articleCategoryId;
 
     /**
      * 父级ID
      */
-    private Integer pid;
+    private Long pid;
 
     /**
      * 商户 id
      */
-    private Integer merId;
+    private Long merId;
 
     /**
      * 文章分类标题

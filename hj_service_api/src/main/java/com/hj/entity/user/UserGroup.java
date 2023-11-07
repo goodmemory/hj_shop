@@ -1,6 +1,5 @@
 package com.hj.entity.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -20,8 +19,8 @@ import java.util.Date;
 public class UserGroup implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "group_id", type = IdType.AUTO)
-    private Integer groupId;
+    @TableId
+    private Long groupId;
 
     private String groupName;
 

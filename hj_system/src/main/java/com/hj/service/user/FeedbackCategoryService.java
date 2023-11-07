@@ -45,7 +45,7 @@ public interface FeedbackCategoryService extends IService<FeedbackCategory> {
      * @param feedbackCategoryId
      * @return
      */
-    FeedbackCategory1Vo getFeedbackCategoryById(Integer feedbackCategoryId);
+    FeedbackCategory1Vo getFeedbackCategoryById(Long feedbackCategoryId);
 
     /**
      * 修改投诉分类
@@ -61,7 +61,7 @@ public interface FeedbackCategoryService extends IService<FeedbackCategory> {
      * @param feedbackCategoryId
      * @return
      */
-    void deleteFeedbackCategoryById(Integer feedbackCategoryId);
+    void deleteFeedbackCategoryById(Long feedbackCategoryId);
 
     /**
      * 修改分类显示状态

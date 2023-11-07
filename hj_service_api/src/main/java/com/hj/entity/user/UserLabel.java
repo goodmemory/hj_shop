@@ -1,6 +1,5 @@
 package com.hj.entity.user;
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -19,12 +18,12 @@ import java.util.Date;
 @NoArgsConstructor
 public class UserLabel implements Serializable {
 
-    @TableId(value = "label_id", type = IdType.AUTO)
-    private Integer labelId;
+    @TableId
+    private Long labelId;
 
     private String labelName;
 
-    private Integer merId;
+    private Long merId;
 
     private Integer type;
 

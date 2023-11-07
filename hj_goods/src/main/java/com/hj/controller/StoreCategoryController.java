@@ -94,7 +94,7 @@ public class StoreCategoryController {
      */
     @PutMapping("/updateStatus/{storeCategoryId}")
     @ApiOperation(value = "修改商品分类状态包括：是否显示，是否推荐，发货前确认")
-    public GraceJSONResult updateCategoryStatus(@PathVariable String storeCategoryId,
+    public GraceJSONResult updateCategoryStatus(@PathVariable Long storeCategoryId,
                                                 @RequestParam Integer type,
                                                 @RequestParam Integer params) {
         storeCategoryService.updateCategoryStatus(type, storeCategoryId, params);
@@ -103,7 +103,7 @@ public class StoreCategoryController {
 
     @PutMapping("/delete/{storeCategoryId}")
     @ApiOperation(value = "删除商品分类")
-    public GraceJSONResult deleteStoreCategory(@PathVariable String storeCategoryId) {
+    public GraceJSONResult deleteStoreCategory(@PathVariable Long storeCategoryId) {
         storeCategoryService.deleteStoreCategory(storeCategoryId);
         return GraceJSONResult.ok();
     }
@@ -116,7 +116,7 @@ public class StoreCategoryController {
      */
     @GetMapping("/getStoreCategoryById")
     @ApiOperation(value = "根据id获取商品详情")
-    public GraceJSONResult getStoreCategoryById(@RequestParam String storeCategoryId) {
+    public GraceJSONResult getStoreCategoryById(@RequestParam Long storeCategoryId) {
         StoreCategoryTwoVo category = storeCategoryService.getStoreCategoryById(storeCategoryId);
         return GraceJSONResult.ok(category);
     }

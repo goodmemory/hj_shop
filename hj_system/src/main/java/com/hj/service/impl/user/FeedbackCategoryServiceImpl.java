@@ -11,6 +11,7 @@ import com.hj.exceptions.GraceException;
 import com.hj.mapper.user.FeedbackCategoryMapper;
 import com.hj.service.user.FeedbackCategoryService;
 import com.hj.util.DateUtil;
+import com.hj.util.IdWorker;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.user.FeedbackCategory1Vo;
 import com.hj.vo.user.FeedbackCategoryVo;
@@ -33,6 +34,8 @@ public class FeedbackCategoryServiceImpl extends ServiceImpl<FeedbackCategoryMap
 
     @Autowired
     private FeedbackCategoryMapper feedbackCategoryMapper;
+    @Autowired
+    private IdWorker idWorker;
 
     /**
      * 获取所有投诉分类分页显示
@@ -94,6 +97,7 @@ public class FeedbackCategoryServiceImpl extends ServiceImpl<FeedbackCategoryMap
             feedbackCategory.setPath("/");
         }
         BeanUtils.copyProperties(bo, feedbackCategory);
+        feedbackCategory.setFeedbackCategoryId(idWorker.nextId());
         int index = feedbackCategoryMapper.insert(feedbackCategory);
         if (index == 0) {
             log.error("FeedbackCategoryServiceImpl===>insertFeedbackCategory:" + ResponseStatusEnum.SYSTEM_OPERATION_ERROR.msg());
@@ -108,7 +112,7 @@ public class FeedbackCategoryServiceImpl extends ServiceImpl<FeedbackCategoryMap
      * @return
      */
     @Override
-    public FeedbackCategory1Vo getFeedbackCategoryById(Integer feedbackCategoryId) {
+    public FeedbackCategory1Vo getFeedbackCategoryById(Long feedbackCategoryId) {
         if (feedbackCategoryId == null) {
             log.error("FeedbackCategoryServiceImpl===>getFeedbackCategoryById:" + ResponseStatusEnum.FEEDBACK_CATEGORY_ID_ERROR.msg());
             GraceException.display(ResponseStatusEnum.FEEDBACK_CATEGORY_ID_ERROR);
@@ -170,7 +174,7 @@ public class FeedbackCategoryServiceImpl extends ServiceImpl<FeedbackCategoryMap
      * @return
      */
     @Override
-    public void deleteFeedbackCategoryById(Integer feedbackCategoryId) {
+    public void deleteFeedbackCategoryById(Long feedbackCategoryId) {
         if (feedbackCategoryId == null) {
             log.error("FeedbackCategoryServiceImpl===>deleteFeedbackCategoryById:" + ResponseStatusEnum.FEEDBACK_CATEGORY_ID_ERROR.msg());
             GraceException.display(ResponseStatusEnum.FEEDBACK_CATEGORY_ID_ERROR);

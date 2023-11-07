@@ -9,9 +9,9 @@ import java.util.List;
 @Data
 public class FeedbackCategoryVo {
 
-    private Integer feedbackCategoryId;
+    private Long feedbackCategoryId;
 
-    private Integer pid;
+    private Long pid;
 
     private String cateName;
 
@@ -25,7 +25,7 @@ public class FeedbackCategoryVo {
 
     private Integer level;
 
-    private Integer merId;
+    private Long merId;
 
     private Date createTime;
 

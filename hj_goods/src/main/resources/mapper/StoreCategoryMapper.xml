@@ -5,8 +5,8 @@
 <mapper namespace="com.hj.mapper.StoreCategoryMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.store.StoreCategory">
-        <id property="storeCategoryId" column="store_category_id" jdbcType="VARCHAR"/>
-        <result property="pid" column="pid" jdbcType="INTEGER"/>
+        <id property="storeCategoryId" column="store_category_id" jdbcType="BIGINT"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
         <result property="cateName" column="cate_name" jdbcType="VARCHAR"/>
         <result property="path" column="path" jdbcType="VARCHAR"/>
         <result property="sort" column="sort" jdbcType="INTEGER"/>
@@ -30,7 +30,7 @@
         is_delivery_confirm,status
     </sql>
 
-    <select id="getStoreCategoryListAll" parameterType="string" resultType="com.hj.vo.store.StoreCategoryVo">
+    <select id="getStoreCategoryListAll" parameterType="long" resultType="com.hj.vo.store.StoreCategoryVo">
         select
         <include refid="Base_Column_List"></include>
         from eb_store_category
@@ -38,7 +38,7 @@
         order by sort desc
     </select>
 
-    <select id="getStoreCategoryNotEqLevel2List" parameterType="string" resultType="com.hj.vo.store.StoreCategoryOneVo">
+    <select id="getStoreCategoryNotEqLevel2List" parameterType="long" resultType="com.hj.vo.store.StoreCategoryOneVo">
         select store_category_id, pid, cate_name
         from eb_store_category
         where status = 1
@@ -47,7 +47,7 @@
         order by sort desc
     </select>
 
-    <select id="getStoreCategoryById" parameterType="string" resultType="com.hj.vo.store.StoreCategoryTwoVo">
+    <select id="getStoreCategoryById" parameterType="long" resultType="com.hj.vo.store.StoreCategoryTwoVo">
         select store_category_id, pid, cate_name
         from eb_store_category
         where status = 1

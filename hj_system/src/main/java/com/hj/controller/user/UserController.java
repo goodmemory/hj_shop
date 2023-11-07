@@ -59,7 +59,7 @@ public class UserController {
      */
     @GetMapping("/getUserById")
     @ApiOperation(value = "根据用户id获取用户信息")
-    public GraceJSONResult getUserById(@RequestParam String uid) {
+    public GraceJSONResult getUserById(@RequestParam Long uid) {
         return GraceJSONResult.ok(userService.getUserById(uid));
     }
 
@@ -86,7 +86,7 @@ public class UserController {
      */
     @PutMapping("/setupMoney/{uid}")
     @ApiOperation(value = "设置红旌币")
-    public GraceJSONResult setupMoney(@PathVariable String uid, @RequestParam BigDecimal nowMoney,
+    public GraceJSONResult setupMoney(@PathVariable Long uid, @RequestParam BigDecimal nowMoney,
                                       @RequestParam Integer type) {
         userService.setupMoney(uid, nowMoney, type);
         return GraceJSONResult.ok();
@@ -102,7 +102,7 @@ public class UserController {
      */
     @PutMapping("/setupIntegral/{uid}")
     @ApiOperation(value = "设置积分")
-    public GraceJSONResult setupIntegral(@PathVariable String uid, @RequestParam Integer nowIntegral,
+    public GraceJSONResult setupIntegral(@PathVariable Long uid, @RequestParam Integer nowIntegral,
                                          @RequestParam Integer type) {
         userService.setupIntegral(uid, nowIntegral, type);
         return GraceJSONResult.ok();
@@ -143,7 +143,7 @@ public class UserController {
      */
     @PutMapping("/spreadUser/{uid}")
     @ApiOperation(value = "修改推荐人")
-    public GraceJSONResult setupSpreadUser(@PathVariable String uid, @RequestParam String spreadUid) {
+    public GraceJSONResult setupSpreadUser(@PathVariable Long uid, @RequestParam String spreadUid) {
         userService.setupSpreadUser(uid, spreadUid);
         return GraceJSONResult.ok();
     }
@@ -157,7 +157,7 @@ public class UserController {
      */
     @PutMapping("/setupMemberLevel/{uid}")
     @ApiOperation(value = "编辑会员等级")
-    public GraceJSONResult setupMemberLevel(@PathVariable String uid, @RequestParam Integer memberLevel) {
+    public GraceJSONResult setupMemberLevel(@PathVariable Long uid, @RequestParam Integer memberLevel) {
         userService.setupMemberLevel(uid, memberLevel);
         return GraceJSONResult.ok();
     }
@@ -187,7 +187,7 @@ public class UserController {
      */
     @ApiOperation(value = "修改密码")
     @GetMapping("/getMoneyInfo/{uid}")
-    public GraceJSONResult getMoneyInfo(@PathVariable String uid, @RequestParam Integer page,
+    public GraceJSONResult getMoneyInfo(@PathVariable Long uid, @RequestParam Integer page,
                                         @RequestParam Integer pageSize) {
         if (page == null) {
             page = ConstantParams.COMMON_START_PAGE;

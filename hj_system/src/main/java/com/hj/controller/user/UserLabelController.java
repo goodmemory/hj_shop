@@ -72,7 +72,7 @@ public class UserLabelController {
      */
     @GetMapping("/{labelId}")
     @ApiOperation(value = "根据id查询用户标签数据")
-    public Result getUserLabelInfoById(@PathVariable Integer labelId) {
+    public Result getUserLabelInfoById(@PathVariable Long labelId) {
         if (labelId == null) {
             return new Result(Boolean.FALSE, StatusCode.ERROR, "操作失败", ConstantParams.LABEL_ID_NOT_ALLOW_NULL);
         }
@@ -106,9 +106,9 @@ public class UserLabelController {
      * @param labelId
      * @return
      */
-    @GetMapping("/delete")
+    @GetMapping("/delete/{labelId}")
     @ApiOperation(value = "删除用户标签")
-    public Result deleteUserLabelById(@RequestParam Integer labelId) {
+    public Result deleteUserLabelById(@PathVariable Long labelId) {
         if (labelId == null) {
             return new Result(Boolean.FALSE, StatusCode.ERROR, "操作失败", ConstantParams.LABEL_ID_NOT_ALLOW_NULL);
         }

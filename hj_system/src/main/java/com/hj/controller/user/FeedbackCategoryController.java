@@ -59,7 +59,7 @@ public class FeedbackCategoryController {
      */
     @GetMapping("/getFeedbackCategoryById")
     @ApiOperation(value = "根据id获取投诉分类信息")
-    public GraceJSONResult getFeedbackCategoryById(@RequestParam Integer feedbackCategoryId) {
+    public GraceJSONResult getFeedbackCategoryById(@RequestParam Long feedbackCategoryId) {
         FeedbackCategory1Vo category = feedbackCategoryService.getFeedbackCategoryById(feedbackCategoryId);
         return GraceJSONResult.ok(category);
     }
@@ -107,9 +107,9 @@ public class FeedbackCategoryController {
      * @param feedbackCategoryId
      * @return
      */
-    @PutMapping("/delete")
+    @PutMapping("/delete/{feedbackCategoryId}")
     @ApiOperation(value = "删除用户投诉分类")
-    public GraceJSONResult deleteFeedbackCategoryById(@RequestParam Integer feedbackCategoryId) {
+    public GraceJSONResult deleteFeedbackCategoryById(@PathVariable Long feedbackCategoryId) {
         feedbackCategoryService.deleteFeedbackCategoryById(feedbackCategoryId);
         return GraceJSONResult.ok();
     }

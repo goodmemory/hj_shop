@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class FeedbackBo {
 
-    private Integer feedbackId;
+    private Long feedbackId;
 
     private String reply;
 }

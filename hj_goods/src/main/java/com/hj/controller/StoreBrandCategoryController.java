@@ -78,7 +78,7 @@ public class StoreBrandCategoryController {
      */
     @PutMapping("/updateIsShow/{storeBrandCategoryId}")
     @ApiOperation(value = "修改是否显示状态")
-    public GraceJSONResult updateIsShow(@PathVariable String storeBrandCategoryId, @RequestParam Integer isShow) {
+    public GraceJSONResult updateIsShow(@PathVariable Long storeBrandCategoryId, @RequestParam Integer isShow) {
         storeBrandCategoryService.updateIsShow(storeBrandCategoryId, isShow);
         return GraceJSONResult.ok();
     }
@@ -91,7 +91,7 @@ public class StoreBrandCategoryController {
      */
     @GetMapping("/getStoreBrandById")
     @ApiOperation(value = "根据id获取品牌分类信息")
-    public GraceJSONResult getStoreBrandCategoryById(@PathVariable String storeBrandCategoryId) {
+    public GraceJSONResult getStoreBrandCategoryById(@PathVariable Long storeBrandCategoryId) {
         StoreBrandCategoryTwoVo category = storeBrandCategoryService.getStoreBrandCategoryById(storeBrandCategoryId);
         return GraceJSONResult.ok(category);
     }
@@ -116,7 +116,7 @@ public class StoreBrandCategoryController {
      */
     @PutMapping("/update/{storeBrandCategoryId}")
     @ApiOperation(value = "删除品牌分类数据")
-    public GraceJSONResult deleteStoreBrandCategory(@PathVariable String storeBrandCategoryId) {
+    public GraceJSONResult deleteStoreBrandCategory(@PathVariable Long storeBrandCategoryId) {
         storeBrandCategoryService.deleteStoreBrandCategory(storeBrandCategoryId);
         return GraceJSONResult.ok();
     }

@@ -9,6 +9,7 @@ import com.hj.entity.user.UserGroup;
 import com.hj.mapper.user.UserGroupMapper;
 import com.hj.service.user.UserGroupService;
 import com.hj.util.DateUtil;
+import com.hj.util.IdWorker;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.user.UserGroupVo;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,8 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
 
     @Autowired
     private UserGroupMapper userGroupMapper;
+    @Autowired
+    private IdWorker idWorker;
 
     /**
      * 获取所有用户组分页显示
@@ -57,6 +60,7 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
     public Integer insertUserGroup(String groupName) {
         UserGroup userGroup = new UserGroup();
         userGroup.setGroupName(groupName);
+        userGroup.setGroupId(idWorker.nextId());
         return userGroupMapper.insert(userGroup);
     }
 
@@ -67,7 +71,7 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
      * @return
      */
     @Override
-    public UserGroupVo getUserGroupInfoById(Integer groupId) {
+    public UserGroupVo getUserGroupInfoById(Long groupId) {
         UserGroup userGroup = this.getById(groupId);
         UserGroupVo groupVo = new UserGroupVo();
         BeanUtils.copyProperties(userGroup, groupVo);
@@ -95,7 +99,7 @@ public class UserGroupServiceImpl extends ServiceImpl<UserGroupMapper, UserGroup
      * @return
      */
     @Override
-    public Boolean deleteUserGroupById(Integer groupId) {
+    public Boolean deleteUserGroupById(Long groupId) {
         UserGroup userGroup = new UserGroup();
         userGroup.setGroupId(groupId);
         userGroup.setStatus(ConstantParams.COMMON_STATUS_0);

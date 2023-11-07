@@ -16,7 +16,7 @@ public class MerchantCategoryVo implements Serializable {
     /**
      * 商户分类 id
      */
-    private Integer merchantCategoryId;
+    private Long merchantCategoryId;
 
     /**
      * 手续费

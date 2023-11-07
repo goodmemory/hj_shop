@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class FeedbackCategoryBo {
 
-    private Integer feedbackCategoryId;
+    private Long feedbackCategoryId;
 
-    private Integer pid;
+    private Long pid;
 
     private String cateName;
 

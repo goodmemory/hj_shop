@@ -7,11 +7,11 @@ import java.util.Date;
 @Data
 public class UserLabelVo {
 
-    private Integer labelId;
+    private Long labelId;
 
     private String labelName;
 
-    private Integer merId;
+    private Long merId;
 
     private Integer type;
 

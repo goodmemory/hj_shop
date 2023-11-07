@@ -46,14 +46,14 @@ public interface StoreCategoryService extends IService<StoreCategory> {
     /**
      * 修改是否显示 1，是否推荐 2 ，发货前确认 3
      */
-    void updateCategoryStatus(Integer type, String storeCategoryId, Integer params);
+    void updateCategoryStatus(Integer type, Long storeCategoryId, Integer params);
 
     /**
      * 删除
      *
      * @param storeCategoryId
      */
-    void deleteStoreCategory(String storeCategoryId);
+    void deleteStoreCategory(Long storeCategoryId);
 
     /**
      * 根据id获取商品信息
@@ -61,5 +61,5 @@ public interface StoreCategoryService extends IService<StoreCategory> {
      * @param storeCategoryId
      * @return
      */
-    StoreCategoryTwoVo getStoreCategoryById(String storeCategoryId);
+    StoreCategoryTwoVo getStoreCategoryById(Long storeCategoryId);
 }

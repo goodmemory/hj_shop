@@ -40,5 +40,5 @@ public interface MemberInterestsService extends IService<MemberInterests> {
      *
      * @param interestsId
      */
-    void deleteMemberInterests(Integer interestsId);
+    void deleteMemberInterests(Long interestsId);
 }

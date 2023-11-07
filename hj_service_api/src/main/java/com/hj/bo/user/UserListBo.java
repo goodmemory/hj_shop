@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class UserListBo {
 
-    private List<String> uids;
-    private Integer groupId;
-    private Integer labelId;
+    private List<Long> uids;
+    private Long groupId;
+    private Long labelId;
 }

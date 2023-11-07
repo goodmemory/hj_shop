@@ -9,6 +9,7 @@ import com.hj.entity.user.UserLabel;
 import com.hj.mapper.user.UserLabelMapper;
 import com.hj.service.user.UserLabelService;
 import com.hj.util.DateUtil;
+import com.hj.util.IdWorker;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.user.UserLabelVo;
 import org.springframework.beans.BeanUtils;
@@ -28,6 +29,8 @@ public class UserLabelServiceImpl extends ServiceImpl<UserLabelMapper, UserLabel
 
     @Autowired
     private UserLabelMapper userLabelMapper;
+    @Autowired
+    private IdWorker idWorker;
 
     /**
      * 获取所有用户标签分页显示
@@ -54,6 +57,7 @@ public class UserLabelServiceImpl extends ServiceImpl<UserLabelMapper, UserLabel
     public Integer insertUserLabel(String labelName) {
         UserLabel userLabel = new UserLabel();
         userLabel.setLabelName(labelName);
+        userLabel.setLabelId(idWorker.nextId());
         return userLabelMapper.insert(userLabel);
     }
 
@@ -64,8 +68,10 @@ public class UserLabelServiceImpl extends ServiceImpl<UserLabelMapper, UserLabel
      * @return
      */
     @Override
-    public UserLabelVo getUserLabelInfoById(Integer labelId) {
-        UserLabel userLabel = this.getById(labelId);
+    public UserLabelVo getUserLabelInfoById(Long labelId) {
+        UserLabel userLabel = userLabelMapper.selectOne(new LambdaQueryWrapper<UserLabel>()
+                .eq(UserLabel::getLabelId, labelId)
+                .eq(UserLabel::getStatus, ConstantParams.COMMON_STATUS_1));
         UserLabelVo userLabelVo = new UserLabelVo();
         BeanUtils.copyProperties(userLabel, userLabelVo);
         return userLabelVo;
@@ -92,7 +98,7 @@ public class UserLabelServiceImpl extends ServiceImpl<UserLabelMapper, UserLabel
      * @return
      */
     @Override
-    public Boolean deleteUserLabelById(Integer labelId) {
+    public Boolean deleteUserLabelById(Long labelId) {
         UserLabel userLabel = new UserLabel();
         userLabel.setLabelId(labelId);
         userLabel.setStatus(ConstantParams.COMMON_STATUS_0);

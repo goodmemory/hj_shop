@@ -35,7 +35,7 @@ public interface UserBrokerageService extends IService<UserBrokerage> {
      * @param userBrokerageId
      * @return
      */
-    UserBrokerageVo getUserBrokerageById(Integer userBrokerageId);
+    UserBrokerageVo getUserBrokerageById(Long userBrokerageId);
 
     /**
      * 修改会员等级
@@ -49,5 +49,5 @@ public interface UserBrokerageService extends IService<UserBrokerage> {
      *
      * @param userBrokerageId
      */
-    void deleteUserBrokerage(Integer userBrokerageId);
+    void deleteUserBrokerage(Long userBrokerageId);
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 public class UserVo {
 
-    private String uid;
+    private Long uid;
 
     /**
      * 真实姓名

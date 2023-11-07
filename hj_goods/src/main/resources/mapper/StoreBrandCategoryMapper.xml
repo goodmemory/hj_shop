@@ -5,8 +5,8 @@
 <mapper namespace="com.hj.mapper.StoreBrandCategoryMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.store.StoreBrandCategory">
-        <id property="storeBrandCategoryId" column="store_brand_category_id" jdbcType="VARCHAR"/>
-        <result property="pid" column="pid" jdbcType="VARCHAR"/>
+        <id property="storeBrandCategoryId" column="store_brand_category_id" jdbcType="BIGINT"/>
+        <result property="pid" column="pid" jdbcType="BIGINT"/>
         <result property="cateName" column="cate_name" jdbcType="VARCHAR"/>
         <result property="path" column="path" jdbcType="VARCHAR"/>
         <result property="sort" column="sort" jdbcType="INTEGER"/>
@@ -25,7 +25,7 @@
         status
     </sql>
 
-    <select id="getStoreBrandCategoryPage" parameterType="string" resultType="com.hj.vo.store.StoreBrandCategoryVo">
+    <select id="getStoreBrandCategoryPage" parameterType="long" resultType="com.hj.vo.store.StoreBrandCategoryVo">
         select
         <include refid="Base_Column_List"></include>
         from eb_store_brand_category
@@ -33,7 +33,7 @@
         order by sort desc
     </select>
 
-    <select id="getStoreBrandCategoryAllList" parameterType="string"
+    <select id="getStoreBrandCategoryAllList" parameterType="long"
             resultType="com.hj.vo.store.StoreBrandCategoryOneVo">
         select store_brand_category_id, pid, cate_name
         from eb_store_brand_category

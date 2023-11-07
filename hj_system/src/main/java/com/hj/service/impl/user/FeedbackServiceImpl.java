@@ -87,7 +87,7 @@ public class FeedbackServiceImpl extends ServiceImpl<FeedbackMapper, Feedback>
      * @return
      */
     @Override
-    public void deleteContent(Integer feedbackId) {
+    public void deleteContent(Long feedbackId) {
         if (feedbackId == null) {
             log.error("FeedbackServiceImpl===>replayContent:" + ResponseStatusEnum.FEEDBACK_ID_ERROR.msg());
             GraceException.display(ResponseStatusEnum.FEEDBACK_ID_ERROR);

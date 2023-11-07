@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class UserGroupVo {
 
-    private Integer groupId;
+    private Long groupId;
 
     private String groupName;
 

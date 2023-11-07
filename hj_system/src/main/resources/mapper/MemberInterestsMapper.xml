@@ -5,7 +5,7 @@
 <mapper namespace="com.hj.mapper.user.MemberInterestsMapper">
 
     <resultMap id="BaseResultMap" type="com.hj.entity.user.MemberInterests">
-        <id property="interestsId" column="interests_id" jdbcType="INTEGER"/>
+        <id property="interestsId" column="interests_id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="info" column="info" jdbcType="VARCHAR"/>
         <result property="brokerageLevel" column="brokerage_level" jdbcType="TINYINT"/>

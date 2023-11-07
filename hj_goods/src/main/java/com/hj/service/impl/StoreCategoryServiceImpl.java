@@ -49,7 +49,7 @@ public class StoreCategoryServiceImpl extends ServiceImpl<StoreCategoryMapper, S
     @Override
     public PagedGridResult getStoreCategoryListPage(Integer page, Integer pageSize) {
         PageHelper.startPage(page, pageSize);
-        List<StoreCategoryVo> list = storeCategoryMapper.getStoreCategoryListAll(ConstantParams.COMMON_STATUS_STR0);
+        List<StoreCategoryVo> list = storeCategoryMapper.getStoreCategoryListAll(ConstantParams.COMMON_STATUS_LONG0);
         for (StoreCategoryVo categoryVo : list) {
             List<StoreCategoryVo> sonList = storeCategoryMapper.getStoreCategoryListAll(categoryVo.getStoreCategoryId());
 
@@ -73,7 +73,7 @@ public class StoreCategoryServiceImpl extends ServiceImpl<StoreCategoryMapper, S
      */
     @Override
     public List<StoreCategoryOneVo> getStoreCategoryList() {
-        List<StoreCategoryOneVo> list = storeCategoryMapper.getStoreCategoryNotEqLevel2List(ConstantParams.COMMON_STATUS_STR0);
+        List<StoreCategoryOneVo> list = storeCategoryMapper.getStoreCategoryNotEqLevel2List(ConstantParams.COMMON_STATUS_LONG0);
         for (StoreCategoryOneVo categoryOneVo : list) {
             List<StoreCategoryOneVo> sonList = storeCategoryMapper.getStoreCategoryNotEqLevel2List(categoryOneVo.getStoreCategoryId());
             if (!CollectionUtils.isEmpty(sonList)) {
@@ -100,7 +100,7 @@ public class StoreCategoryServiceImpl extends ServiceImpl<StoreCategoryMapper, S
         }
         StoreCategory category = new StoreCategory();
         BeanUtils.copyProperties(bo, category);
-        category.setStoreCategoryId("SC" + idWorker.nextId());
+        category.setStoreCategoryId(idWorker.nextId());
         if (bo.getPid().equals(ConstantParams.COMMON_STATUS_STR0)) {
             category.setPath("/");
             category.setLevel(ConstantParams.COMMON_STATUS_0);
@@ -159,7 +159,7 @@ public class StoreCategoryServiceImpl extends ServiceImpl<StoreCategoryMapper, S
      * @param storeCategoryId
      */
     @Override
-    public void updateCategoryStatus(Integer type, String storeCategoryId, Integer params) {
+    public void updateCategoryStatus(Integer type, Long storeCategoryId, Integer params) {
         if (StringUtils.isEmpty(storeCategoryId)) {
             log.error("StoreCategoryServiceImpl===>updateCategoryStatus:" + ResponseStatusEnum.STORE_CATEGORY_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.STORE_CATEGORY_ID_NOT_NULL);
@@ -188,7 +188,7 @@ public class StoreCategoryServiceImpl extends ServiceImpl<StoreCategoryMapper, S
      * @param storeCategoryId
      */
     @Override
-    public void deleteStoreCategory(String storeCategoryId) {
+    public void deleteStoreCategory(Long storeCategoryId) {
         if (StringUtils.isEmpty(storeCategoryId)) {
             log.error("StoreCategoryServiceImpl===>deleteStoreCategory:" + ResponseStatusEnum.STORE_CATEGORY_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.STORE_CATEGORY_ID_NOT_NULL);
@@ -209,7 +209,7 @@ public class StoreCategoryServiceImpl extends ServiceImpl<StoreCategoryMapper, S
      * @return
      */
     @Override
-    public StoreCategoryTwoVo getStoreCategoryById(String storeCategoryId) {
+    public StoreCategoryTwoVo getStoreCategoryById(Long storeCategoryId) {
         if (StringUtils.isEmpty(storeCategoryId)) {
             log.error("StoreCategoryServiceImpl===>getStoreCategoryById:" + ResponseStatusEnum.STORE_CATEGORY_ID_NOT_NULL.msg());
             GraceException.display(ResponseStatusEnum.STORE_CATEGORY_ID_NOT_NULL);
