@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.merchant.MerchantMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.merchant.Merchant">
+        <id property="merId" column="mer_id" jdbcType="BIGINT"/>
+        <result property="categoryId" column="category_id" jdbcType="BIGINT"/>
+        <result property="typeId" column="type_id" jdbcType="BIGINT"/>
+        <result property="merName" column="mer_name" jdbcType="VARCHAR"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="merPhone" column="mer_phone" jdbcType="VARCHAR"/>
+        <result property="merAddress" column="mer_address" jdbcType="VARCHAR"/>
+        <result property="merKeyword" column="mer_keyword" jdbcType="VARCHAR"/>
+        <result property="merAvatar" column="mer_avatar" jdbcType="VARCHAR"/>
+        <result property="merBanner" column="mer_banner" jdbcType="VARCHAR"/>
+        <result property="miniBanner" column="mini_banner" jdbcType="VARCHAR"/>
+        <result property="sales" column="sales" jdbcType="INTEGER"/>
+        <result property="productScore" column="product_score" jdbcType="DECIMAL"/>
+        <result property="serviceScore" column="service_score" jdbcType="DECIMAL"/>
+        <result property="postageScore" column="postage_score" jdbcType="DECIMAL"/>
+        <result property="mark" column="mark" jdbcType="VARCHAR"/>
+        <result property="regAdminId" column="reg_admin_id" jdbcType="INTEGER"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="commissionRate" column="commission_rate" jdbcType="DECIMAL"/>
+        <result property="longitude" column="longitude" jdbcType="VARCHAR"/>
+        <result property="latitude" column="latitude" jdbcType="VARCHAR"/>
+        <result property="isDel" column="is_del" jdbcType="TINYINT"/>
+        <result property="isAudit" column="is_audit" jdbcType="TINYINT"/>
+        <result property="isBroRoom" column="is_bro_room" jdbcType="TINYINT"/>
+        <result property="isBroGoods" column="is_bro_goods" jdbcType="TINYINT"/>
+        <result property="isBest" column="is_best" jdbcType="TINYINT"/>
+        <result property="isTrader" column="is_trader" jdbcType="TINYINT"/>
+        <result property="merState" column="mer_state" jdbcType="TINYINT"/>
+        <result property="merInfo" column="mer_info" jdbcType="VARCHAR"/>
+        <result property="servicePhone" column="service_phone" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="careCount" column="care_count" jdbcType="INTEGER"/>
+        <result property="copyProductNum" column="copy_product_num" jdbcType="INTEGER"/>
+        <result property="exportDumpNum" column="export_dump_num" jdbcType="INTEGER"/>
+        <result property="merMoney" column="mer_money" jdbcType="DECIMAL"/>
+        <result property="financialBank" column="financial_bank" jdbcType="VARCHAR"/>
+        <result property="financialWechat" column="financial_wechat" jdbcType="VARCHAR"/>
+        <result property="financialAlipay" column="financial_alipay" jdbcType="VARCHAR"/>
+        <result property="financialType" column="financial_type" jdbcType="TINYINT"/>
+        <result property="subMchid" column="sub_mchid" jdbcType="VARCHAR"/>
+        <result property="deliveryWay" column="delivery_way" jdbcType="VARCHAR"/>
+        <result property="margin" column="margin" jdbcType="DECIMAL"/>
+        <result property="isMargin" column="is_margin" jdbcType="TINYINT"/>
+        <result property="deliveryBalance" column="delivery_balance" jdbcType="DECIMAL"/>
+        <result property="otMargin" column="ot_margin" jdbcType="DECIMAL"/>
+        <result property="inviterId" column="inviter_id" jdbcType="INTEGER"/>
+        <result property="provinceId" column="province_id" jdbcType="INTEGER"/>
+        <result property="cityId" column="city_id" jdbcType="INTEGER"/>
+        <result property="regionId" column="region_id" jdbcType="INTEGER"/>
+        <result property="merImages" column="mer_images" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        mer_id
+        ,category_id,type_id,
+        mer_name,real_name,mer_phone,
+        mer_address,mer_keyword,mer_avatar,
+        mer_banner,mini_banner,sales,
+        product_score,service_score,postage_score,
+        mark,reg_admin_id,sort,
+        status,commission_rate,longitude,
+        latitude,is_del,is_audit,
+        is_bro_room,is_bro_goods,is_best,
+        is_trader,mer_state,mer_info,
+        service_phone,create_time,update_time,
+        care_count,copy_product_num,export_dump_num,
+        mer_money,financial_bank,financial_wechat,
+        financial_alipay,financial_type,sub_mchid,
+        delivery_way,margin,is_margin,
+        delivery_balance,ot_margin,inviter_id,
+        province_id,city_id,region_id,
+        mer_images
+    </sql>
+</mapper>

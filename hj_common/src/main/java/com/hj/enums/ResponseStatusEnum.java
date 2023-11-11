@@ -129,6 +129,11 @@ public enum ResponseStatusEnum {
     STORE_BRAND_NAME_NOT_NULL(670, false, "商品品牌名称不能为空！"),
     STORE_BRAND_ID_NOT_NULL(671, false, "商品品牌ID不能为空！"),
 
+    //评论
+    STORE_PRODUCE_REPLY_ID_NOT_NULL(680, false, "评论ID不能为空！"),
+
+    //商品
+    STORE_PRODUCE_ID_NOT_NULL(681, false, "商品ID不能为空！"),
     // 系统错误，未预期的错误 555
     SYSTEM_ERROR(555, false, "系统繁忙，请稍后再试！"),
     SYSTEM_OPERATION_ERROR(556, false, "操作失败，请重试或联系管理员"),

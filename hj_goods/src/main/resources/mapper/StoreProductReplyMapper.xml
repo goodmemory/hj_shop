@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.StoreProductReplyMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.store.StoreProductReply">
+        <id property="replyId" column="reply_id" jdbcType="BIGINT"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="merId" column="mer_id" jdbcType="BIGINT"/>
+        <result property="orderProductId" column="order_product_id" jdbcType="BIGINT"/>
+        <result property="unique" column="unique" jdbcType="CHAR"/>
+        <result property="productId" column="product_id" jdbcType="BIGINT"/>
+        <result property="productType" column="product_type" jdbcType="TINYINT"/>
+        <result property="productScore" column="product_score" jdbcType="TINYINT"/>
+        <result property="serviceScore" column="service_score" jdbcType="TINYINT"/>
+        <result property="postageScore" column="postage_score" jdbcType="TINYINT"/>
+        <result property="rate" column="rate" jdbcType="FLOAT"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="pics" column="pics" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="merchantReplyContent" column="merchant_reply_content" jdbcType="VARCHAR"/>
+        <result property="merchantReplyTime" column="merchant_reply_time" jdbcType="TIMESTAMP"/>
+        <result property="sort" column="sort" jdbcType="SMALLINT"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="isReply" column="is_reply" jdbcType="TINYINT"/>
+        <result property="isVirtual" column="is_virtual" jdbcType="TINYINT"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        reply_id
+        ,uid,mer_id,
+        order_product_id,unique,product_id,
+        product_type,product_score,service_score,
+        postage_score,rate,comment,
+        pics,create_time,update_time,
+        merchant_reply_content,merchant_reply_time,sort,
+        status,is_reply,is_virtual,
+        nickname,avatar
+    </sql>
+
+    <select id="getStoreProductReplyListPage" parameterType="com.hj.bo.store.StoreProductReplyBo"
+            resultType="com.hj.vo.store.StoreProductReplyVo">
+        select espr.reply_id,espr.uid,espr.mer_id,
+        espr.order_product_id,espr.unique,espr.product_id,
+        espr.product_type,espr.product_score,espr.service_score,
+        espr.postage_score,espr.rate,espr.comment,
+        espr.pics,espr.merchant_reply_content,espr.merchant_reply_time,espr.sort,
+        espr.status,espr.is_reply,espr.is_virtual,espr.create_time,
+        espr.nickname,espr.avatar,esp.store_name
+        from eb_store_product_reply espr left join eb_store_product esp on espr.product_id= esp.product_id and
+        esp.status=1
+        <where>
+            <choose>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='today' ">
+                    espr.create_time like concat('',CURRENT_DATE, '%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='yesterday' ">
+                    espr.create_time like concat('',DATE_SUB(CURRENT_DATE,INTERVAL 1 DAY), '%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='lately7' ">
+                    espr.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 7 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL -1
+                    DAY)
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='lately30' ">
+                    espr.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 30 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL
+                    -1 DAY)
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='month' ">
+                    espr.create_time LIKE CONCAT('',MONTH(CURRENT_DATE),'%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='year' ">
+                    espr.create_time LIKE CONCAT('',YEAR(CURRENT_DATE),'%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' ">
+                    espr.create_time BETWEEN #{bo.beginDate} AND DATE_SUB(#{bo.endDate},INTERVAL -1 DAY)
+                </when>
+            </choose>
+            <if test="bo.nickname!=null and bo.nickname!='' ">
+                and espr.nickname like CONCAT('%',#{bo.nickname}, '%')
+            </if>
+            <if test="bo.keyword!=null and bo.keyword!=''">
+                and esp.product_id like CONCAT('%',#{bo.keyword},'%') or esp.store_name like
+                CONCAT('%',#{bo.keyword},'%')
+            </if>
+            <if test="bo.isReply!=''">
+                and espr.is_reply = #{bo.isReply}
+            </if>
+            and espr.status=1
+        </where>
+        order by espr.sort desc
+    </select>
+</mapper>

@@ -1,9 +1,8 @@
 package com.hj.util;
 
-import cn.hutool.core.codec.Base64;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,6 +12,9 @@ public class DateUtil {
 
     //时间格式
     public static final String PATTERN_YYYYMMDDHH = "yyyyMMddHH";
+    public static final String PATTERN_YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String PATTERN_YYYY_MM = "yyyy-MM";
+    public static final String PATTERN_YYYY = "yyyy";
     public static final String PATTERN_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
     public static final String PATTERN_YYYY_MM_DDHHMM = "yyyy-MM-dd HH:mm";
 
@@ -21,7 +23,7 @@ public class DateUtil {
      * @param dateStr
      * @return
      */
-    public static String formatStr(String dateStr,String opattern,String npattern){
+    public static String formatStr(String dateStr, String opattern, String npattern) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(opattern);
         try {
             Date date = simpleDateFormat.parse(dateStr);
@@ -156,8 +158,48 @@ public class DateUtil {
         return timestamp;
     }
 
+    /**
+     * 获取当前时间 yyyy-MM-dd
+     *
+     * @return
+     */
+    public static String getCurrentDate(String formDate) {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat(formDate);
+        String dateStr = dateFormat.format(date);
+        return dateStr;
+    }
+
+    /**
+     * 获取当前时间之前的日期
+     *
+     * @return
+     */
+    public static LocalDate getYesterday(Integer day) {
+        LocalDate currentDate = LocalDate.now();
+        // 获取前一天日期
+        LocalDate previousDate = currentDate.minusDays(day);
+        // 输出前一天日期
+        return previousDate;
+    }
+
+    /**
+     * 将"yyyy/MM/dd" 转换成 "yyyy-MM-dd"
+     *
+     * @param dateStr
+     * @return
+     */
+    public static String parsFormatDate(String dateStr) {
+        Date formatDat = null;
+        try {
+            formatDat = new SimpleDateFormat("yyyy/MM/dd").parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String str = new SimpleDateFormat("yyyy-MM-dd").format(formatDat);
+        return str;
+    }
+
     public static void main(String[] args) {
-        System.out.println(Base64.encode("123456"));
-        System.out.println(Base64.decode("MTIzNDU2"));
     }
 }
