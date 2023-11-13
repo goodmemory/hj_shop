@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.GuaranteeMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.store.Guarantee">
+        <id property="guaranteeId" column="guarantee_id" jdbcType="BIGINT"/>
+        <result property="guaranteeName" column="guarantee_name" jdbcType="VARCHAR"/>
+        <result property="guaranteeInfo" column="guarantee_info" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="merCount" column="mer_count" jdbcType="INTEGER"/>
+        <result property="productCout" column="product_cout" jdbcType="INTEGER"/>
+        <result property="isDel" column="is_del" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        guarantee_id
+        ,guarantee_name,guarantee_info,
+        status,image,sort,
+        mer_count,product_cout,is_del,
+        create_time,update_time
+    </sql>
+</mapper>

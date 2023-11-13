@@ -17,6 +17,8 @@
         <module>hj_file</module>
         <module>hj_system</module>
         <module>hj_goods</module>
+        <module>hj_finance</module>
+        <module>hj_order</module>
     </modules>
 
     <parent>

@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 @MapperScan("com.hj.mapper")
 @EnableFeignClients(basePackages = "com.hj.feign")
-public class GoodsApplication {
+public class FinanceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GoodsApplication.class, args);
+        SpringApplication.run(FinanceApplication.class, args);
     }
 
 

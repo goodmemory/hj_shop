@@ -19,11 +19,11 @@ import com.hj.util.IdWorker;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.article.ArticleVo;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
         validateArticle(bo);
         Article article = new Article();
         BeanUtils.copyProperties(bo, article);
-        article.setArticleId("a" + idWorker.nextId());
+        article.setArticleId(idWorker.nextId());
         int index = articleMapper.insert(article);
         if (index == 0) {
             log.error("ArticleServiceImpl===>insertArticle:" + ResponseStatusEnum.SYSTEM_OPERATION_ERROR.msg());
@@ -79,7 +79,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article>
         } else {
             //添加文章内容到内容表
             ArticleContent content = new ArticleContent();
-            content.setArticleContentId("ac" + idWorker.nextId());
+            content.setArticleContentId(idWorker.nextId());
             content.setArticleId(article.getArticleId());
             content.setContent(bo.getContent());
             int index1 = articleContentMapper.insert(content);

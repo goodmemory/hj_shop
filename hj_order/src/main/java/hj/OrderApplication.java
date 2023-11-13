@@ -1,4 +1,4 @@
-package com.hj;
+package hj;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.hj.util.IdWorker;
@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Bean;
 @EnableEurekaClient
 @MapperScan("com.hj.mapper")
 @EnableFeignClients(basePackages = "com.hj.feign")
-public class GoodsApplication {
+public class OrderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GoodsApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 
 

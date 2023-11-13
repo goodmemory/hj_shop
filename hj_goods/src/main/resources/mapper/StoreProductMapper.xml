@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.StoreProductMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.store.StoreProduct">
+        <id property="productId" column="product_id" jdbcType="BIGINT"/>
+        <result property="merId" column="mer_id" jdbcType="BIGINT"/>
+        <result property="storeName" column="store_name" jdbcType="VARCHAR"/>
+        <result property="storeInfo" column="store_info" jdbcType="VARCHAR"/>
+        <result property="keyword" column="keyword" jdbcType="VARCHAR"/>
+        <result property="barCode" column="bar_code" jdbcType="VARCHAR"/>
+        <result property="brandId" column="brand_id" jdbcType="BIGINT"/>
+        <result property="isShow" column="is_show" jdbcType="TINYINT"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="isDel" column="is_del" jdbcType="TINYINT"/>
+        <result property="merStatus" column="mer_status" jdbcType="TINYINT"/>
+        <result property="cateId" column="cate_id" jdbcType="BIGINT"/>
+        <result property="unitName" column="unit_name" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="SMALLINT"/>
+        <result property="rank" column="rank" jdbcType="SMALLINT"/>
+        <result property="sales" column="sales" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="cost" column="cost" jdbcType="DECIMAL"/>
+        <result property="otPrice" column="ot_price" jdbcType="DECIMAL"/>
+        <result property="stock" column="stock" jdbcType="INTEGER"/>
+        <result property="isHot" column="is_hot" jdbcType="TINYINT"/>
+        <result property="isBenefit" column="is_benefit" jdbcType="TINYINT"/>
+        <result property="isBest" column="is_best" jdbcType="TINYINT"/>
+        <result property="isNew" column="is_new" jdbcType="TINYINT"/>
+        <result property="isGood" column="is_good" jdbcType="TINYINT"/>
+        <result property="productType" column="product_type" jdbcType="TINYINT"/>
+        <result property="ficti" column="ficti" jdbcType="INTEGER"/>
+        <result property="browse" column="browse" jdbcType="INTEGER"/>
+        <result property="codePath" column="code_path" jdbcType="VARCHAR"/>
+        <result property="videoLink" column="video_link" jdbcType="VARCHAR"/>
+        <result property="tempId" column="temp_id" jdbcType="INTEGER"/>
+        <result property="specType" column="spec_type" jdbcType="TINYINT"/>
+        <result property="extensionType" column="extension_type" jdbcType="TINYINT"/>
+        <result property="refusal" column="refusal" jdbcType="VARCHAR"/>
+        <result property="rate" column="rate" jdbcType="DECIMAL"/>
+        <result property="replyCount" column="reply_count" jdbcType="INTEGER"/>
+        <result property="giveCouponIds" column="give_coupon_ids" jdbcType="VARCHAR"/>
+        <result property="isGiftBag" column="is_gift_bag" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="careCount" column="care_count" jdbcType="INTEGER"/>
+        <result property="isUsed" column="is_used" jdbcType="INTEGER"/>
+        <result property="oldProductId" column="old_product_id" jdbcType="INTEGER"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="platformImage" column="platform_image" jdbcType="VARCHAR"/>
+        <result property="sliderImage" column="slider_image" jdbcType="VARCHAR"/>
+        <result property="guaranteeTemplateId" column="guarantee_template_id" jdbcType="INTEGER"/>
+        <result property="onceCount" column="once_count" jdbcType="INTEGER"/>
+        <result property="integralRate" column="integral_rate" jdbcType="INTEGER"/>
+        <result property="integralTotal" column="integral_total" jdbcType="INTEGER"/>
+        <result property="integralPriceTotal" column="integral_price_total" jdbcType="DECIMAL"/>
+        <result property="labelId" column="label_id" jdbcType="BIGINT"/>
+        <result property="deliveryWay" column="delivery_way" jdbcType="VARCHAR"/>
+        <result property="deliveryFree" column="delivery_free" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+        <result property="extend" column="extend" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        product_id
+        ,mer_id,store_name,
+        store_info,keyword,bar_code,
+        brand_id,is_show,status,
+        is_del,mer_status,cate_id,
+        unit_name,sort,rank,
+        sales,price,cost,
+        ot_price,stock,is_hot,
+        is_benefit,is_best,is_new,
+        is_good,product_type,ficti,
+        browse,code_path,video_link,
+        temp_id,spec_type,extension_type,
+        refusal,rate,reply_count,
+        give_coupon_ids,is_gift_bag,create_time,
+        update_time,care_count,is_used,
+        old_product_id,image,platform_image,
+        slider_image,guarantee_template_id,once_count,
+        integral_rate,integral_total,integral_price_total,
+        label_id,delivery_way,delivery_free,
+        type,extend
+    </sql>
+
+    <select id="getStoreProductListPage" parameterType="com.hj.bo.store.StoreProductBo"
+            resultType="com.hj.vo.store.StoreProductVo">
+        select esp.product_id,esp.mer_id,esp.store_name,esp.image,esp.price,em.merName,em.isTrader
+        esp.sales,esp.stock,esp.isUsed,esp.createTime,esp.status
+        from eb_store_produce esp
+        left join eb_merchant em on esp.mer_id=em.mer_id
+        <where>
+            <if test="bo.cateId!='' ">
+                esp.care_id=#{bo.cateId}
+            </if>
+            <if test="bo.merId!=''">
+                and esp.mer_id=#{bo.merId}
+            </if>
+            <if test="bo.isShow!=''">
+                and esp.is_show=#{isShow}
+            </if>
+            <if test="bo.isTrader!=''">
+                and em.is_trader=#{isTrader}
+            </if>
+            <if test="bo.isTrader!=''">
+                and em.is_trader=#{isTrader}
+            </if>
+            <if test="bo.labelId!=''">
+                and esp.label_id=#{labelId}
+            </if>
+            <if test="bo.keyword!='' and bo.keyword!=null">
+                and esp.store_name like CONCAT('%',#{keyword}, '%')
+                or esp.bar_code like CONCAT('%',#{keyword}, '%')
+            </if>
+            <choose>
+                <when test="bo.status!=null and bo.status!=''">
+                    and esp.status=#{status}
+                </when>
+                <otherwise>
+                    and esp.status=1
+                </otherwise>
+            </choose>
+        </where>
+        order by esp.sort desc
+    </select>
+</mapper>

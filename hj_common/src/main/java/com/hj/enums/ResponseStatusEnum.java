@@ -114,6 +114,11 @@ public enum ResponseStatusEnum {
     //商户分类
     MERCHANT_CATEGORY_NAME_NOT_NULL(645, false, "商户分类名称不能为空！"),
     MERCHANT_CATEGORY_ID_NOT_NULL(646, false, "商户分类ID不能为空！"),
+    //商户
+    MERCHANT_NAME_NOT_NULL(647, false, "商户名称不能为空！"),
+    MERCHANT_ID_NOT_NULL(648, false, "商户分类ID不能为空！"),
+    MERCHANT_CATEGORY_NOT_NULL(649, false, "商户分类不能为空！"),
+    MERCHANT_TYPE_NOT_NULL(650, false, "商户类型不能为空！"),
 
     //商品分类
     STORE_CATEGORY_NAME_NOT_NULL(660, false, "商品分类名称不能为空！"),
@@ -134,6 +139,16 @@ public enum ResponseStatusEnum {
 
     //商品
     STORE_PRODUCE_ID_NOT_NULL(681, false, "商品ID不能为空！"),
+    //商标签
+    STORE_PRODUCE_LABEL_ID_NOT_NULL(690, false, "商品标签ID不能为空！"),
+    STORE_PRODUCE_LABEL_NAME_NOT_NULL(691, false, "商品标签名称不能为空！"),
+
+    //保障服务
+    GUARANTEE_NAME_NOT_NULL(700, false, "服务条款不能为空！"),
+    GUARANTEE_INFO_NOT_NULL(701, false, "服务内容描述不能为空！"),
+    GUARANTEE_IMAGE_NOT_NULL(702, false, "服务条款图标不能为空！"),
+    GUARANTEE_ID_NOT_NULL(703, false, "服务ID不能为空！"),
+
     // 系统错误，未预期的错误 555
     SYSTEM_ERROR(555, false, "系统繁忙，请稍后再试！"),
     SYSTEM_OPERATION_ERROR(556, false, "操作失败，请重试或联系管理员"),
