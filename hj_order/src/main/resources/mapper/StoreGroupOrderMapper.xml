@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.StoreGroupOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.order.StoreGroupOrder">
+        <id property="groupOrderId" column="group_order_id" jdbcType="BIGINT"/>
+        <result property="groupOrderNo" column="group_order_no" jdbcType="VARCHAR"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="totalPostage" column="total_postage" jdbcType="DECIMAL"/>
+        <result property="totalPrice" column="total_price" jdbcType="DECIMAL"/>
+        <result property="totalNum" column="total_num" jdbcType="INTEGER"/>
+        <result property="integral" column="integral" jdbcType="INTEGER"/>
+        <result property="integralPrice" column="integral_price" jdbcType="DECIMAL"/>
+        <result property="giveIntegral" column="give_integral" jdbcType="INTEGER"/>
+        <result property="couponPrice" column="coupon_price" jdbcType="DECIMAL"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="userAddress" column="user_address" jdbcType="VARCHAR"/>
+        <result property="payPrice" column="pay_price" jdbcType="DECIMAL"/>
+        <result property="payPostage" column="pay_postage" jdbcType="DECIMAL"/>
+        <result property="cost" column="cost" jdbcType="DECIMAL"/>
+        <result property="couponId" column="coupon_id" jdbcType="VARCHAR"/>
+        <result property="giveCouponIds" column="give_coupon_ids" jdbcType="VARCHAR"/>
+        <result property="paid" column="paid" jdbcType="TINYINT"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="payType" column="pay_type" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="isRemind" column="is_remind" jdbcType="TINYINT"/>
+        <result property="isDel" column="is_del" jdbcType="TINYINT"/>
+        <result property="isCombine" column="is_combine" jdbcType="TINYINT"/>
+        <result property="inviterId" column="inviter_id" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        group_order_id
+        ,group_order_no,uid,
+        total_postage,total_price,total_num,
+        integral,integral_price,give_integral,
+        coupon_price,real_name,user_phone,
+        user_address,pay_price,pay_postage,
+        cost,coupon_id,give_coupon_ids,
+        paid,pay_time,pay_type,
+        create_time,is_remind,is_del,
+        is_combine,inviter_id
+    </sql>
+</mapper>

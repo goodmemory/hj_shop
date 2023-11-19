@@ -148,6 +148,8 @@ public enum ResponseStatusEnum {
     GUARANTEE_INFO_NOT_NULL(701, false, "服务内容描述不能为空！"),
     GUARANTEE_IMAGE_NOT_NULL(702, false, "服务条款图标不能为空！"),
     GUARANTEE_ID_NOT_NULL(703, false, "服务ID不能为空！"),
+    //订单
+    ORDER_NO_NOT_NULL(710, false, "订单号不能为空！"),
 
     // 系统错误，未预期的错误 555
     SYSTEM_ERROR(555, false, "系统繁忙，请稍后再试！"),

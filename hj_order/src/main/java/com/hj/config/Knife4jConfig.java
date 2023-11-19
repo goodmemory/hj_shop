@@ -1,4 +1,4 @@
-package hj.config;
+package com.hj.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ public class Knife4jConfig {
                         //.title("swagger-bootstrap-ui-demo RESTful APIs")
                         .description("红旌商城接口文档")
                         .termsOfServiceUrl("http://www.xx.com/")
-                        .contact(new Contact("hj", "http://www.hjkjfj.cn/", null))
+                        .contact(new Contact("com/hj", "http://www.hjkjfj.cn/", null))
                         .version("1.0")
                         .build())
                 //分组名称

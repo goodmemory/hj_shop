@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.StoreOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.order.StoreOrder">
+        <id property="orderId" column="order_id" jdbcType="BIGINT"/>
+        <result property="mainId" column="main_id" jdbcType="BIGINT"/>
+        <result property="groupOrderId" column="group_order_id" jdbcType="BIGINT"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="spreadUid" column="spread_uid" jdbcType="BIGINT"/>
+        <result property="topUid" column="top_uid" jdbcType="BIGINT"/>
+        <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+        <result property="userPhone" column="user_phone" jdbcType="VARCHAR"/>
+        <result property="userAddress" column="user_address" jdbcType="VARCHAR"/>
+        <result property="cartId" column="cart_id" jdbcType="BIGINT"/>
+        <result property="totalNum" column="total_num" jdbcType="INTEGER"/>
+        <result property="totalPrice" column="total_price" jdbcType="DECIMAL"/>
+        <result property="totalPostage" column="total_postage" jdbcType="DECIMAL"/>
+        <result property="payPrice" column="pay_price" jdbcType="DECIMAL"/>
+        <result property="payPostage" column="pay_postage" jdbcType="DECIMAL"/>
+        <result property="isSelfbuy" column="is_selfbuy" jdbcType="TINYINT"/>
+        <result property="extensionOne" column="extension_one" jdbcType="DECIMAL"/>
+        <result property="extensionTwo" column="extension_two" jdbcType="DECIMAL"/>
+        <result property="commissionRate" column="commission_rate" jdbcType="DECIMAL"/>
+        <result property="integral" column="integral" jdbcType="INTEGER"/>
+        <result property="integralPrice" column="integral_price" jdbcType="DECIMAL"/>
+        <result property="giveIntegral" column="give_integral" jdbcType="INTEGER"/>
+        <result property="couponId" column="coupon_id" jdbcType="VARCHAR"/>
+        <result property="couponPrice" column="coupon_price" jdbcType="DECIMAL"/>
+        <result property="platformCouponPrice" column="platform_coupon_price" jdbcType="DECIMAL"/>
+        <result property="orderType" column="order_type" jdbcType="TINYINT"/>
+        <result property="paid" column="paid" jdbcType="TINYINT"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="payType" column="pay_type" jdbcType="TINYINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="deliveryType" column="delivery_type" jdbcType="VARCHAR"/>
+        <result property="isVirtual" column="is_virtual" jdbcType="TINYINT"/>
+        <result property="deliveryName" column="delivery_name" jdbcType="VARCHAR"/>
+        <result property="deliveryId" column="delivery_id" jdbcType="VARCHAR"/>
+        <result property="mark" column="mark" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="adminMark" column="admin_mark" jdbcType="VARCHAR"/>
+        <result property="verifyCode" column="verify_code" jdbcType="CHAR"/>
+        <result property="verifyTime" column="verify_time" jdbcType="TIMESTAMP"/>
+        <result property="verifyServiceId" column="verify_service_id" jdbcType="INTEGER"/>
+        <result property="transactionId" column="transaction_id" jdbcType="VARCHAR"/>
+        <result property="activityType" column="activity_type" jdbcType="TINYINT"/>
+        <result property="orderExtend" column="order_extend" jdbcType="VARCHAR"/>
+        <result property="merId" column="mer_id" jdbcType="BIGINT"/>
+        <result property="reconciliationId" column="reconciliation_id" jdbcType="TINYINT"/>
+        <result property="cost" column="cost" jdbcType="DECIMAL"/>
+        <result property="isDel" column="is_del" jdbcType="TINYINT"/>
+        <result property="isSystemDel" column="is_system_del" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        order_id
+        ,main_id,group_order_id,
+        order_sn,uid,spread_uid,
+        top_uid,real_name,user_phone,
+        user_address,cart_id,total_num,
+        total_price,total_postage,pay_price,
+        pay_postage,is_selfbuy,extension_one,
+        extension_two,commission_rate,integral,
+        integral_price,give_integral,coupon_id,
+        coupon_price,platform_coupon_price,order_type,
+        paid,pay_time,pay_type,
+        create_time,status,delivery_type,
+        is_virtual,delivery_name,delivery_id,
+        mark,remark,admin_mark,
+        verify_code,verify_time,verify_service_id,
+        transaction_id,activity_type,order_extend,
+        mer_id,reconciliation_id,cost,
+        is_del,is_system_del
+    </sql>
+
+    <select id="getStoreOrderList" resultType="com.hj.vo.order.StoreOrderVo"
+            parameterType="com.hj.bo.order.StoreOrderBo">
+        select eso.order_no,eso.order_type,eso.activity_type,esgo.real_name,esgo.paid,
+        em.mer_name,em.is_trader,esp.store_name,eso.pay_price,eso.extension_one,
+        eso.extension_two,eso.pay_type,eso.status,eso.create_time
+        from eb_store_order eso
+        left join eb_store_group_order esgo on eso.group_order_id=esgo.group_order_id
+        left join eb_user eu on eso.uid=eu.uid
+        left join eb_merchant em on eso.mer_id=em.mer_id
+        left join eb_store_cart esc on eso.cart_id=esc.cart_id
+        left join eb_store_product esp on esp.product_id=esc.product_id
+        <where>
+            <choose>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='today' ">
+                    eso.create_time like concat('',CURRENT_DATE, '%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='yesterday' ">
+                    eso.create_time like concat('',DATE_SUB(CURRENT_DATE,INTERVAL 1 DAY), '%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='lately7' ">
+                    eso.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 7 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL -1
+                    DAY)
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='lately30' ">
+                    eso.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 30 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL
+                    -1 DAY)
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='month' ">
+                    eso.create_time LIKE CONCAT('',MONTH(CURRENT_DATE),'%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' and bo.date=='year' ">
+                    eso.create_time LIKE CONCAT('',YEAR(CURRENT_DATE),'%')
+                </when>
+                <when test="bo.date!=null and bo.date!='' ">
+                    eso.create_time BETWEEN #{bo.beginDate} AND DATE_SUB(#{bo.endDate},INTERVAL -1 DAY)
+                </when>
+            </choose>
+            <if test="bo.activityType!='' and bo.activityType!=null ">
+                and eso.activity_type=#{bo.activityType}
+            </if>
+            <if test="bo.status!=''and bo.status!=null">
+                and eso.status=#{bo.status}
+            </if>
+            <if test="bo.storeName!='' and bo.storeName!=null ">
+                and esp.mer_name like concat('%',#{bo.storeName}, '%')
+            </if>
+            <if test="bo.isTrader!='' and bo.isTrader!=null ">
+                and em.is_trader = #{bo.isTrader}
+            </if>
+            <if test="bo.merId!='' and bo.merId!=null ">
+                and em.mer_id = #{bo.merId}
+            </if>
+            <if test="bo.keyword!='' and bo.keyword!=null ">
+                and eso.order_no like concat('%',#{bo.keyword}, '%')
+                or esgo.real_name like concat('%',#{bo.keyword}, '%')
+                or esgo.user_phone like concat('%',#{bo.keyword}, '%')
+            </if>
+            <if test="bo.groupOrderNo!='' and bo.groupOrderNo!=null ">
+                and esgo.group_order_no like concat('%',#{groupOrderNo}, '%')
+            </if>
+            <if test="bo.username!='' and bo.username!=null ">
+                and eu.nickname like concat('%',#{bo.username}, '%')
+                or eu.phone like concat('%',#{bo.username}, '%')
+            </if>
+            and eso.is_del=1
+        </where>
+    </select>
+
+    <select id="getStoreOrderInfoByOrderNo" parameterType="string" resultType="com.hj.vo.order.StoreOrderVo">
+        select eu.nickname,
+               esgo.real_name,
+               esgo.user_phone,
+               esgo.user_address,
+               eso.order_no,
+               eso.status,
+               eso.total_num,
+               eso.total_price,
+               eso.pay_postage,
+               eso.coupon_price,
+               eso.platform_coupon_price,
+               eso.integral_price,
+               eso.give_integral,
+               eso.mark,
+               eso.pay_price,
+               eso.create_time,
+               eso.extension_one,
+               eso.extension_two
+        from eb_store_order eso
+                 left join eb_store_group_order esgo on eso.group_order_id = esgo.group_order_id
+                 left join eb_user eu on eso.uid = eu.uid
+        where eso.order_no = #{orderNo}
+          and eso.is_del = 1
+    </select>
+</mapper>

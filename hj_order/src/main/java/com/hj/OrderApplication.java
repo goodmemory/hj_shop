@@ -1,4 +1,4 @@
-package hj;
+package com.hj;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.hj.util.IdWorker;
