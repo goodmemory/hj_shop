@@ -11,6 +11,7 @@ import com.hj.enums.ResponseStatusEnum;
 import com.hj.exceptions.GraceException;
 import com.hj.mapper.StoreOrderMapper;
 import com.hj.service.StoreOrderService;
+import com.hj.util.DateUtil;
 import com.hj.util.PagedGridResult;
 import com.hj.vo.order.StoreOrderPageVo;
 import com.hj.vo.order.StoreOrderVo;
@@ -43,6 +44,13 @@ public class StoreOrderServiceImpl extends ServiceImpl<StoreOrderMapper, StoreOr
     @Override
     public PagedGridResult getStoreOrderListPage(StoreOrderBo bo) {
         PageHelper.startPage(bo.getPage(), bo.getPageSize());
+        if (!StringUtils.isEmpty(bo.getDate()) && bo.getDate().contains("-")) {
+            String[] split = bo.getDate().split("-");
+            String beginDate = DateUtil.parsFormatDate(split[0]);
+            String endDate = DateUtil.parsFormatDate(split[1]);
+            bo.setBeginDate(beginDate);
+            bo.setEndDate(endDate);
+        }
         List<StoreOrderVo> list = storeOrderMapper.getStoreOrderList(bo);
         return PagedGridResult.setterPagedGrid(list, bo.getPage());
     }
@@ -58,6 +66,13 @@ public class StoreOrderServiceImpl extends ServiceImpl<StoreOrderMapper, StoreOr
         StoreOrderPageVo pageVo = new StoreOrderPageVo();
         pageVo.setStoreOrderPage(getStoreOrderListPage(bo));
 
+        if (!StringUtils.isEmpty(bo.getDate()) && bo.getDate().contains("-")) {
+            String[] split = bo.getDate().split("-");
+            String beginDate = DateUtil.parsFormatDate(split[0]);
+            String endDate = DateUtil.parsFormatDate(split[1]);
+            bo.setBeginDate(beginDate);
+            bo.setEndDate(endDate);
+        }
         List<StoreOrderVo> list = storeOrderMapper.getStoreOrderList(bo);
         //余额支付总金额
         BigDecimal balanceCount = list.stream().filter(storeOrderVo -> storeOrderVo.getPayType() == PayTypeEnum.BALANCE_PAY.getValue())

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.UserRechargeMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.finance.UserRecharge">
+        <id property="rechargeId" column="recharge_id" jdbcType="BIGINT"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="DECIMAL"/>
+        <result property="givePrice" column="give_price" jdbcType="DECIMAL"/>
+        <result property="rechargeType" column="recharge_type" jdbcType="VARCHAR"/>
+        <result property="paid" column="paid" jdbcType="TINYINT"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="refundPrice" column="refund_price" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        recharge_id
+        ,uid,order_no,
+        price,give_price,recharge_type,
+        paid,pay_time,create_time,
+        refund_price
+    </sql>
+
+    <select id="getUserRechargeListPage" resultType="com.hj.vo.finance.UserRechargeVo" parameterType="hashmap">
+        select eur.recharge_id,eur.order_no,eu.avatar,eu.nickname,eur.price,
+        eur.give_price,eur.paid,eur.recharge_type,eur.pay_time,eur.refund_price
+        from eb_user_recharge eur left left join eb_user eu on eur.uid=eu.uid
+        <where>
+            <choose>
+                <when test="date!=null and date!='' and date=='today' ">
+                    eur.create_time like concat('',CURRENT_DATE, '%')
+                </when>
+                <when test="date!=null and date!='' and date=='yesterday' ">
+                    eur.create_time like concat('',DATE_SUB(CURRENT_DATE,INTERVAL 1 DAY), '%')
+                </when>
+                <when test="date!=null and date!='' and date=='lately7' ">
+                    eur.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 7 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL -1
+                    DAY)
+                </when>
+                <when test="date!=null and date!='' and date=='lately30' ">
+                    eur.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 30 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL
+                    -1 DAY)
+                </when>
+                <when test="date!=null and date!='' and date=='month' ">
+                    eur.create_time LIKE CONCAT('',MONTH(CURRENT_DATE),'%')
+                </when>
+                <when test="date!=null and date!='' and date=='year' ">
+                    eur.create_time LIKE CONCAT('',YEAR(CURRENT_DATE),'%')
+                </when>
+                <when test="date!=null and date!='' ">
+                    eur.create_time BETWEEN #{beginDate} AND DATE_SUB(#{endDate},INTERVAL -1 DAY)
+                </when>
+            </choose>
+            <if test="paid!=null">
+                and eur.paid=#{paid}
+            </if>
+            <if test="keyword!=null and keyword!=''">
+                and eur.order_no like CONCAT('%',#{keyword},'%')
+                or eu.nickname like CONCAT('%',#{keyword},'%')
+            </if>
+            and eur.status=1
+        </where>
+    </select>
+</mapper>

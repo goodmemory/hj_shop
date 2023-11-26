@@ -47,4 +47,8 @@ public class StoreOrderBo {
      * 0:普通 1:秒杀 2:预售 3:助力 4:拼团 10:套餐
      */
     private Integer activityType;
+
+    private String beginDate;
+    private String endDate;
+
 }

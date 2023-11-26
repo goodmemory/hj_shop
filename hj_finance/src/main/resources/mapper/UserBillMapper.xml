@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hj.mapper.UserBillMapper">
+
+    <resultMap id="BaseResultMap" type="com.hj.entity.user.UserBill">
+        <id property="billId" column="bill_id" jdbcType="BIGINT"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="linkId" column="link_id" jdbcType="BIGINT"/>
+        <result property="pm" column="pm" jdbcType="TINYINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="category" column="category" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="number" column="number" jdbcType="DECIMAL"/>
+        <result property="balance" column="balance" jdbcType="DECIMAL"/>
+        <result property="mark" column="mark" jdbcType="VARCHAR"/>
+        <result property="merId" column="mer_id" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        bill_id
+        ,uid,link_id,
+        pm,title,category,
+        type,number,balance,
+        mark,mer_id,create_time,
+        status
+    </sql>
+
+    <select id="getUserBillListPage" resultType="com.hj.vo.finance.UserBillVo" parameterType="hashmap">
+        select eu.nickname, eub.bill_id,eub.uid,eub.link_id,eub.pm,eub.title,eub.category,eub.type,eub.number,
+        eub.balance,eub.mark,eub.mer_id,eub.create_time,eub.status
+        from eb_user_bill eub left join eb_user eu on eub.uid=eu.id
+        <where>
+            <choose>
+                <when test="date!=null and date!='' and date=='today' ">
+                    eub.create_time like concat('',CURRENT_DATE, '%')
+                </when>
+                <when test="date!=null and date!='' and date=='yesterday' ">
+                    eub.create_time like concat('',DATE_SUB(CURRENT_DATE,INTERVAL 1 DAY), '%')
+                </when>
+                <when test="date!=null and date!='' and date=='lately7' ">
+                    eub.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 7 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL -1
+                    DAY)
+                </when>
+                <when test="date!=null and bo.date!='' and date=='lately30' ">
+                    eub.create_time BETWEEN DATE_SUB(CURRENT_DATE,INTERVAL 30 DAY) AND DATE_SUB(CURRENT_DATE,INTERVAL
+                    -1 DAY)
+                </when>
+                <when test="date!=null and date!='' and date=='month' ">
+                    eub.create_time LIKE CONCAT('',MONTH(CURRENT_DATE),'%')
+                </when>
+                <when test="date!=null and date!='' and date=='year' ">
+                    eub.create_time LIKE CONCAT('',YEAR(CURRENT_DATE),'%')
+                </when>
+                <when test="date!=null and date!='' ">
+                    eub.create_time BETWEEN #{beginDate} AND DATE_SUB(#{endDate},INTERVAL -1 DAY)
+                </when>
+            </choose>
+            <if test="type!=null and type!=''">
+                and eub.type =#{type}
+            </if>
+            <if test="keyword!=null and keyword!=''">
+                and eu.nickname=#{keyword}
+            </if>
+            and status=1
+            order by eu.create_time desc
+        </where>
+    </select>
+</mapper>
